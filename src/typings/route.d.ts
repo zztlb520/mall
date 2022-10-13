@@ -8,15 +8,9 @@ declare namespace AuthRoute {
         // 固定的路由
         | 'root' // 根路由
         | 'login'
+        | 'home'
         | 'not-found'
-        | 'service-error'
-        | 'constant-page'
         | 'not-found-page' // 捕获无效path的路由
-        // 自定义路由
-        | 'exception'
-        | 'exception_403'
-        | 'exception_404'
-        | 'exception_500'
         | 'about';
 
     /** 路由的path */
@@ -30,10 +24,9 @@ declare namespace AuthRoute {
      * 路由的组件
      * - basic - 基础布局，具有公共部分的布局
      * - blank - 空白布局
-     * - multi - 多级路由布局(三级路由或三级以上时，除第一级路由和最后一级路由，其余的采用该布局)
      * - self - 作为子路由，使用自身的布局(作为最后一级路由，没有子路由)
      */
-    type RouteComponent = 'basic' | 'blank' | 'multi' | 'self';
+    type RouteComponent = 'basic' | 'blank' | 'self';
 
     /** 路由描述 */
     interface RouteMeta {
@@ -53,9 +46,9 @@ declare namespace AuthRoute {
         /** 缓存页面 */
         keepAlive?: boolean;
         /** 菜单和面包屑对应的图标(iconify图标名称) */
-        icon?: string;
-        /** 使用本地svg作为的菜单和面包屑对应的图标(assets/svg-icon文件夹的的svg文件名) */
-        localIcon?: string;
+        // icon?: string;
+        // /** 使用本地svg作为的菜单和面包屑对应的图标(assets/svg-icon文件夹的的svg文件名) */
+        // localIcon?: string;
         /** 是否在菜单中隐藏(一些列表、表格的详情页面需要通过参数跳转，所以不能显示在菜单中) */
         // hide?: boolean;
         /** 外链链接 */

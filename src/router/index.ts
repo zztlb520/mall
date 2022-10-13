@@ -1,25 +1,30 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import type { App } from 'vue';
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
+import { transformAuthRoutesToVueRoutes, transformRouteNameToRoutePath } from '@/utils';
+import { constantRoutes } from './routes';
+import { scrollBehavior } from './helpers';
+import { createRouterGuard } from './guard';
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+const { VITE_HASH_ROUTE = 'N', VITE_BASE_URL } = import.meta.env;
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes
-})
+export const router = createRouter({
+  history: VITE_HASH_ROUTE === 'Y' ? createWebHashHistory(VITE_BASE_URL) : createWebHistory(VITE_BASE_URL),
+  routes: transformAuthRoutesToVueRoutes(constantRoutes),
+  scrollBehavior
+});
 
-export default router
+/** setup vue router. - [安装vue路由] */
+export async function setupRouter(app: App) {
+  app.use(router);
+  
+  createRouterGuard(router);
+  await router.isReady();
+}
+
+/** 路由名称 */
+export const routeName = (key: AuthRoute.RouteKey) => key;
+/** 路由路径 */
+export const routePath = (key: Exclude<AuthRoute.RouteKey, 'not-found-page'>) => transformRouteNameToRoutePath(key);
+
+export * from './routes';
+export * from './modules';

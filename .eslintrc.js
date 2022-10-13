@@ -26,7 +26,7 @@ module.exports = {
               position: 'before'
             },
             {
-              pattern: 'naive-ui',
+              pattern: 'vant-ui',
               group: 'external',
               position: 'before'
             },
@@ -111,7 +111,7 @@ module.exports = {
               position: 'before'
             }
           ],
-          pathGroupsExcludedImportTypes: ['vue', 'vue-router', 'pinia', 'naive-ui']
+          pathGroupsExcludedImportTypes: ['vue', 'vue-router', 'pinia', 'vant-ui']
         }
       ]
     }

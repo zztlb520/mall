@@ -1,6 +1,26 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import { createApp } from 'vue';
+import App from './App.vue';
+// import { setupDirectives } from './directives';
+import { setupRouter } from './router';
+import { setupAssets } from './plugins';
+import { setupStore } from './store';
 
-createApp(App).use(store).use(router).mount('#app')
+async function setupApp() {
+  setupAssets();
+
+  const app = createApp(App);
+
+  // store plugin: pinia
+  setupStore(app);
+
+  // vue custom directives
+//   setupDirectives(app);
+
+  // vue router
+  await setupRouter(app);
+
+  // mount app
+  app.mount('#app');
+}
+
+setupApp();

@@ -10,7 +10,6 @@ import {
     transformRequestData
 } from '@/utils';
 import { handleRefreshToken } from './helpers';
-import { transform } from '@vue/compiler-core';
 
 /**
  * 封装axios请求类

@@ -22,7 +22,7 @@ function hasErrorMsg(error: Service.RequestError) {
   
     addErrorMsg(error);
     window.console.warn(error.code, error.msg);
-    window.$toast?({type:'fail',message:error.msg, duration: ERROR_MSG_DURATION });
+    // window.$toast?.fail(error.msg, { duration: ERROR_MSG_DURATION });
     setTimeout(() => {
       removeErrorMsg(error);
     }, ERROR_MSG_DURATION);

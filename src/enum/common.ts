@@ -9,6 +9,8 @@ export enum EnumContentType {
   export enum EnumStorageKey {
     /** 主题颜色 */
     'theme-color' = '__THEME_COLOR__',
+    /** 主题配置 */
+    'theme-settings' = '__THEME_SETTINGS__',
     /** 用户token */
     'token' = '__TOKEN__',
     /** 用户刷新token */

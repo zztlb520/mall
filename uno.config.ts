@@ -1,11 +1,11 @@
-import { defineConfig, presetUno } from 'unocss';
+import { defineConfig } from '@unocss/vite';
+import presetUno from '@unocss/preset-uno';
 
 export default defineConfig({
-  exclude: ['node_modules', '.git', 'dist', 'mock', './stats.html'],
+  exclude: ['node_modules', 'dist', '.git', '.husky', '.vscode', 'public', 'build', 'mock', './stats.html'],
   presets: [presetUno({ dark: 'class' })],
   shortcuts: {
     'wh-full': 'w-full h-full',
-    'flex-wrap': 'wrap',
     'flex-center': 'flex justify-center items-center',
     'flex-col-center': 'flex-center flex-col',
     'flex-x-center': 'flex justify-center',

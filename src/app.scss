@@ -1,0 +1,31 @@
+#app {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  [data-theme='dark'] {
+    &,
+    * {
+      color-scheme: dark !important;
+      transition: background-color 300ms;
+    }
+  }
+  
+  [data-theme='light'] {
+    &,
+    * {
+      color-scheme: light !important;
+      transition: background-color 300ms;
+    }
+  
+    body {
+      background-color: #eff2f5;
+    }
+  }
+  
