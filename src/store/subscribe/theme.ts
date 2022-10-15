@@ -96,12 +96,12 @@ type ThemeVarsKeys = keyof ThemeVars;
 
 /** 添加css vars至html */
 function addThemeCssVarsToHtml(themeVars: ThemeVars) {
-//   const keys = Object.keys(themeVars) as ThemeVarsKeys[];
-//   const style: string[] = [];
-//   keys.forEach(key => {
-//     style.push(`--${kebabCase(key)}: ${themeVars[key]}`);
-//   });
-//   const styleStr = style.join(';');
-//   document.documentElement.style.cssText += styleStr;
-//   console.log(document.documentElement)
+  const keys = Object.keys(themeVars) as ThemeVarsKeys[];
+  const style: string[] = [];
+  keys.forEach(key => {
+    style.push(`--${kebabCase(key)}: ${themeVars[key]}`);
+  });
+  const styleStr = style.join(';');
+  document.documentElement.style.cssText += styleStr;
+  console.log(document.documentElement)
 }

@@ -43,11 +43,14 @@ function getThemeColors(colors: [ColorType, string][]) {
   const themeColor: ThemeColor = {};
 
   colors.forEach(color => {
-    colorActions.forEach(action => {
-      const [colorType, colorValue] = color;
-      const colorKey: ColorKey = `--van-${colorType}-color`;
-      themeColor[colorKey] = action.handler(colorValue);
-    });
+    const [colorType, colorValue] = color;
+    const colorKey: ColorKey = `--van-${colorType}-color`;
+    themeColor[colorKey] = colorValue;
+    // colorActions.forEach(action => {
+    //   const [colorType, colorValue] = color;
+    //   const colorKey: ColorKey = `--van-${colorType}-color`;
+    //   themeColor[colorKey] = action.handler(colorValue);
+    // });
   });
 
   return themeColor;
@@ -56,7 +59,6 @@ function getThemeColors(colors: [ColorType, string][]) {
 /** 获取vant的主题颜色 */
 export function getNaiveThemeOverrides(colors: Record<ColorType, string>) {
   const { primary, success, warning, danger } = colors;
-  console.log(colors)
   const info = themeSetting.isCustomizeInfoColor ? colors.info : getColorPalette(primary, 7);
 
   const themeColors = getThemeColors([

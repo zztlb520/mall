@@ -23,7 +23,9 @@
       }
     ]
   },
-  "themeColor": "#1890ff",
+  "themeColor": "#34C759",
+  "darkColor": "#18181c",
+  "lightColor": "#fff",
   "themeColorList": [
     "#1890ff",
     "#409EFF",

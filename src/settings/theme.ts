@@ -30,6 +30,8 @@ const themeColorList = [
 
 const defaultThemeSetting: Theme.Setting = {
   darkMode: false,
+  darkColor:"#18181c",
+  lightColor:'#fff',
   followSystemTheme: true,
   layout: {
     minWidth: 900,
@@ -41,7 +43,7 @@ const defaultThemeSetting: Theme.Setting = {
       { value: 'template-four', label: EnumTemplate['template-four'] }
     ]
   },
-  themeColor: themeColorList[0],
+  themeColor: '#34C759',
   themeColorList,
   otherColor: {
     info: '#2080f0',

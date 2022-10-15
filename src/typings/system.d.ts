@@ -99,6 +99,10 @@ declare namespace Theme {
     interface Setting {
       /** 暗黑模式 */
       darkMode: boolean;
+      /** 暗黑模式 应用颜色 */
+      darkColor: string;
+      /** 暗黑模式 应用颜色 */
+      lightColor: string;
       /** 是否自动跟随系统主题 */
       followSystemTheme: boolean;
       /** 布局样式 */

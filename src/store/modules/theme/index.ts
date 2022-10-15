@@ -8,13 +8,16 @@ export const useThemeStore = defineStore('theme-store', {
   getters: {
     /** vantUI的主题配置 */
     vantThemeOverrides(state) {
+        
       const overrides = getNaiveThemeOverrides({ primary: state.themeColor, ...state.otherColor });
       return overrides;
     },
     /** naive-ui暗黑主题 */
-    naiveTheme(state) {
-        // state.darkMode ? darkTheme : undefined;
-      return undefined;
+    vantTheme(state) {
+        return state.darkMode ? state.darkColor : state.lightColor;
+    },
+    vantThemeInversion(state) {
+        return state.darkMode ? state.lightColor : state.darkColor;
     },
     /** 页面动画模式 */
     pageAnimateMode(state) {
