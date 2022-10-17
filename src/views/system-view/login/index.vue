@@ -1,16 +1,15 @@
 <template>
-  <div class="relative flex-center wh-full" :style="{ backgroundColor: bgColor }">
+  <div class="relative flex-x-center wh-full" :style="{ backgroundColor: bgColor }">
     <dark-mode-switch
       :dark="theme.darkMode"
-      class="absolute left-48px top-24px z-3 text-20px"
+      class="absolute left-48px top-24px z-9 text-20px"
       @update:dark="theme.setDarkMode"/>
     <div class="z-4 !w-auto shadow-sm">
         <div class="w-340px">
             <header class="flex-y-center flex-col justify-between">
-                <div class="w-80px rounded-50% h-80px logo dark:bg-[#18181c] bg-white">
-                    <logo :bgColor="bgColor" :themeColor="theme.themeColor" :vantThemeInversion="theme.vantThemeInversion"/>
+                <logo :bgColor="bgColor" :darkMode="theme.darkMode" :themeColor="theme.themeColor" :vantThemeInversion="theme.vantThemeInversion"/>
             </header>
-            <main class="pt-24px main" :style="{ backgroundColor: bgColor }">
+            <main class="main" :style="{ backgroundColor: bgColor }">
                 <h3 class="text-18px text-primary font-medium">{{ activeModule.label }}</h3>
                 <div class="pt-24px">
                     <transition name="fade-slide" mode="out-in" appear>
