@@ -90,6 +90,7 @@ export function handleResponseError(response: AxiosResponse) {
  * @param backendResult - 后端接口的响应数据
  */
 export function handleBackendError(backendResult: Record<string, any>, config: Service.BackendResultConfig) {
+    console.log(backendResult)
     const { codeKey, msgKey } = config;
     const error: Service.RequestError = {
         type: 'backend',

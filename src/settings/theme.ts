@@ -43,7 +43,7 @@ const defaultThemeSetting: Theme.Setting = {
       { value: 'template-four', label: EnumTemplate['template-four'] }
     ]
   },
-  themeColor: '#057748',
+  themeColor: '#815476',
   themeColorList,
   otherColor: {
     info: '#2080f0',
