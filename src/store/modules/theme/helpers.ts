@@ -21,8 +21,8 @@ export function initThemeSettings() {
 }
 
 type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'danger';
-type ColorScene = '' | 'button' | 'button-background' | 'Pressed' | 'Active';
-type ColorKey = `--van-${ColorType}-color`;
+type ColorScene = '' | 'Dark' | 'Light' | 'Lightest' | 'Transparency';
+type ColorKey = `--van-${ColorType}${ColorScene}-color`;
 type ThemeColor = Partial<Record<ColorKey, string>>;
 
 interface ColorAction {
@@ -34,23 +34,23 @@ interface ColorAction {
 function getThemeColors(colors: [ColorType, string][]) {
   const colorActions: ColorAction[] = [
     { scene: '', handler: color => color },
-    { scene: 'button', handler: color => color },
-    { scene: 'button-background', handler: color => getColorPalette(color, 5) },
-    { scene: 'Pressed', handler: color => getColorPalette(color, 7) },
-    { scene: 'Active', handler: color => addColorAlpha(color, 0.1) }
+    { scene: 'Dark', handler: color => getColorPalette(color,2) },
+    { scene: 'Light', handler: color => getColorPalette(color, 5) },
+    { scene: 'Lightest', handler: color => getColorPalette(color, 7) },
+    { scene: 'Transparency', handler: color => addColorAlpha(color, 0.1) }
   ];
 
   const themeColor: ThemeColor = {};
 
   colors.forEach(color => {
-    const [colorType, colorValue] = color;
-    const colorKey: ColorKey = `--van-${colorType}-color`;
-    themeColor[colorKey] = colorValue;
-    // colorActions.forEach(action => {
-    //   const [colorType, colorValue] = color;
-    //   const colorKey: ColorKey = `--van-${colorType}-color`;
-    //   themeColor[colorKey] = action.handler(colorValue);
-    // });
+    // const [colorType, colorValue] = color;
+    // const colorKey: ColorKey = `--van-${colorType}-color`;
+    // themeColor[colorKey] = colorValue;
+    colorActions.forEach(action => {
+      const [colorType, colorValue] = color;
+      const colorKey: ColorKey = `--van-${colorType}${action.scene}-color`;
+      themeColor[colorKey] = action.handler(colorValue);
+    });
   });
 
   return themeColor;

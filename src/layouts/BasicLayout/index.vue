@@ -1,15 +1,34 @@
 <template>
-  <div>
-    BasicLayout
-  </div>
+    <div> 
+        <global-header v-bind="headerProps"/>
+        <!-- <global-sider/> -->
+        <global-content/>
+        <global-footer/>
+    </div>
+    <!-- <global-back-top /> -->
+    
 </template>
 
-<script>
-export default {
+<script setup lang="ts">
+import { useAppStore, useThemeStore } from '@/store';
+import { useBasicLayout } from '@/composables';
+import { useBoolean } from '@/hooks';
+import {
+  GlobalBackTop,
+  GlobalContent,
+  GlobalFooter,
+  GlobalHeader,
+  GlobalSider,
+} from '../common';
 
-}
+defineOptions({ name: 'BasicLayout' });
+
+const app = useAppStore();
+const theme = useThemeStore();
+
+const { headerProps } = useBasicLayout();
+
+const { bool: addMainOverflowHidden, setBool: setAddMainOverflowHidden } = useBoolean();
 </script>
 
-<style>
-
-</style>
+<style scoped></style>

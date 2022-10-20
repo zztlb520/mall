@@ -76,8 +76,7 @@ export default class CustomAxiosInstance {
                             return this.instance.request(config);
                         }
                     }
-
-                    const error = handleBackendError(backend[dataKey],this.backendConfig);
+                    const error = handleBackendError(backend, this.backendConfig);
                     return handleServiceResult(error,null)
                 }
                 const error = handleResponseError(response);

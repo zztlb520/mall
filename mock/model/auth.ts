@@ -7,7 +7,7 @@ interface UserModel extends Auth.UserInfo {
 export const userModel: UserModel[] = [
     {
         token: '__TOKEN_USER__',
-        refreshToken: '__REFRESH_TOKEN_SOYBEAN__',
+        refreshToken: '__REFRESH_TOKEN_ZZT__',
         userId: '0',
         userName: 'zzt',
         userRole: 'user',

@@ -1,5 +1,5 @@
 import { ERROR_MSG_DURATION, NO_ERROR_MSG_CODE } from '@/config';
-
+import { showFailToast } from 'vant'
 /** 错误消息栈，防止同一错误同时出现 */
 const errorMsgStack = new Map<string | number, string>([]);
 
@@ -21,8 +21,8 @@ function hasErrorMsg(error: Service.RequestError) {
     if (!error.msg || NO_ERROR_MSG_CODE.includes(error.code) || hasErrorMsg(error)) return;
   
     addErrorMsg(error);
-    window.console.warn(error.code, error.msg);
-    // window.$toast?.fail(error.msg, { duration: ERROR_MSG_DURATION });
+    
+    showFailToast({message:error.msg, duration: ERROR_MSG_DURATION });
     setTimeout(() => {
       removeErrorMsg(error);
     }, ERROR_MSG_DURATION);

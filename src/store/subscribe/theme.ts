@@ -80,9 +80,11 @@ export default function subscribeThemeStore() {
 function handleCssDarkMode() {
   const DARK_CLASS = 'dark';
   function addDarkClass() {
+    document.documentElement.setAttribute('data-theme','dark')
     document.documentElement.classList.add(DARK_CLASS);
   }
   function removeDarkClass() {
+    document.documentElement.setAttribute('data-theme','default')
     document.documentElement.classList.remove(DARK_CLASS);
   }
   return {
@@ -103,5 +105,4 @@ function addThemeCssVarsToHtml(themeVars: ThemeVars) {
   });
   const styleStr = style.join(';');
   document.documentElement.style.cssText += styleStr;
-  console.log(document.documentElement)
 }

@@ -47,16 +47,6 @@ export const constantRoutes: AuthRoute.Route[] = [
       singleLayout: 'blank'
     }
   },
-  {
-    name: 'home',
-    path: '/home',
-    component: 'self',
-    meta: {
-      title: '首页',
-      requiresAuth: true,
-      singleLayout: 'blank'
-    }
-  },
   // 匹配无效路径的路由
   {
     name: 'not-found-page',

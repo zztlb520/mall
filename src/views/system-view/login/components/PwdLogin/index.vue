@@ -20,7 +20,7 @@
                 <van-checkbox icon-size="14px" shape="square" v-model="rememberMe">记住我</van-checkbox>
                 <a @click="toLoginModule('reset-pwd')">忘记密码？</a>
             </div>
-            <van-button round block type="primary" native-type="handleSubmit">确定</van-button>
+            <van-button round block :loading="auth.loginLoading" type="primary" native-type="handleSubmit">确定</van-button>
             <div class="flex-y-center justify-between">
                 <van-button class="flex-1 !border-none" block size="small" @click="toLoginModule('code-login')">
                     {{ EnumLoginModule['code-login'] }}
@@ -31,6 +31,7 @@
                 </van-button>
             </div>
         </van-space>
+        <other-account @login="handleLoginOtherAccount" />
     </van-form>
 </template>
 
@@ -42,6 +43,7 @@ import { EnumLoginModule } from '@/enum';
 import { useAuthStore } from '@/store';
 import { useRouterPush } from '@/composables';
 import { formRules } from '@/utils';
+import { OtherAccount } from './components';
 interface Props {
     /** 主题颜色 */
     bgColor: string;
@@ -50,6 +52,9 @@ interface Props {
 const props = defineProps<Props>();
 const { toLoginModule } = useRouterPush();
 
+const { login } = useAuthStore();
+const auth = useAuthStore();
+
 const form = reactive({
     userName:'',
     password:'',
@@ -57,7 +62,6 @@ const form = reactive({
 
 const formRef = ref<FormInstance>();
 const rememberMe = ref<boolean>();
-const { login } = useAuthStore();
 
 const onFailed = (errorInfo:{values:object, errors: {name: string, message: string}[]}) => {
     showFailToast(errorInfo.errors[0].message);
@@ -71,6 +75,11 @@ async function handleSubmit() {
     }).catch((message:string)=>{
         showFailToast(message)
     });
+}
+
+function handleLoginOtherAccount(param: { userName: string; password: string }) {
+  const { userName, password } = param;
+  login(userName, password);
 }
 </script>
 
