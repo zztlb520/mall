@@ -9,6 +9,8 @@
     --color-shadow:hsl(240, 6%, 70%);
     --color-contrast-higher: black;
     --color-nav-bg: var(--van-primary-light-color);
+    --color-primary-text:var(--van-primary-light-color);
+    
   }
   
   [data-theme="dark"] {
@@ -21,5 +23,6 @@
     --color-shadow:hsl(0, 0%, 100%);
     --color-contrast-higher: white;
     --color-nav-bg: var(--van-primary-dark-color);
+    --color-primary-text:var(--van-primary-dark-color);
     
 }

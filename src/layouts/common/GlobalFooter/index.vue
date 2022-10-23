@@ -207,6 +207,9 @@ onMounted(()=>{
 
 #tabbar ul li.active {
     --icon-circle: 68px;
+    svg{
+        color: var(--c-color);
+    }
 }
 
 #tabbar ul li button {
@@ -236,7 +239,7 @@ onMounted(()=>{
           clip-path: circle(var(--icon-circle) at 50% 100%);
 }
 #tabbar ul li button svg {
-  color: var(--c-color);
+//   color: var(--c-color);
   display: block;
   overflow: visible;
   width: 68px;

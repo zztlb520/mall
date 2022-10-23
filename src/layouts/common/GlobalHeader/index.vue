@@ -1,5 +1,5 @@
 <template>
-  <van-nav-bar title="标题" left-text="返回" left-arrow>
+  <van-nav-bar left-arrow :border="false">
     <template #left>
         <menu-collapse v-if="showMenuCollapse" />
     </template>
@@ -29,7 +29,7 @@ const theme = useThemeStore();
 
 <style lang="scss" scoped>
 .van-nav-bar{
-    background-image: linear-gradient(to right,var(--color-nav-bg),var(--van-primary-color));
+  background: transparent;
 }
 
 </style>
