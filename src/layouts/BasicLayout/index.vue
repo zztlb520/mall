@@ -1,12 +1,11 @@
 <template>
-    <div> 
+    <div class="bg-primary-Gradient transition duration-300 ease-in-out">
         <global-header v-bind="headerProps"/>
         <!-- <global-sider/> -->
         <global-content/>
         <global-footer/>
+        <!-- <global-back-top /> -->
     </div>
-    <!-- <global-back-top /> -->
-    
 </template>
 
 <script setup lang="ts">

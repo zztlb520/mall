@@ -1,17 +1,14 @@
 <template>
-  <van-nav-bar left-arrow :border="false">
-    <template #left>
+    <div class="flex-y-center justify-between h-56px">
+        <search />
         <menu-collapse v-if="showMenuCollapse" />
-    </template>
-    <template #right>
         <dark-mode-switch :dark="theme.darkMode" class="text-20px" @update:dark="theme.setDarkMode"/>
-    </template>
-  </van-nav-bar>
+    </div>
 </template>
 
 <script setup lang="ts">
 import { useThemeStore } from "@/store";
-import { MenuCollapse  } from './components';
+import { MenuCollapse, Search } from './components';
 interface Props {
   /** 显示logo */
   showLogo: GlobalHeaderProps['showLogo'];
@@ -26,10 +23,3 @@ defineProps<Props>();
 const theme = useThemeStore();
 
 </script>
-
-<style lang="scss" scoped>
-.van-nav-bar{
-  background: transparent;
-}
-
-</style>

@@ -58,10 +58,10 @@ export default defineConfig({
       warning_hover: 'var(--van-warning-color-hover)',
       warning_pressed: 'var(--van-warning-color-pressed)',
       warning_active: 'var(--van-warning-color-active)',
-      error: 'var(--van-error-color)',
-      error_hover: 'var(--van-error-color-hover)',
-      error_pressed: 'var(--van-error-color-pressed)',
-      error_active: 'var(--van-error-color-active)',
+      danger: 'var(--van-danger-color)',
+      danger_hover: 'var(--van-danger-color-hover)',
+      danger_lightest: 'var(--van-danger-lightest-color)',
+      danger_active: 'var(--van-danger-color-active)',
       dark: 'var(--van-background-2)',
       theme_dark:'var(--van-background-2)'
     }

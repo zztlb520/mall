@@ -1,28 +1,30 @@
 
 :root, [data-theme="default"] {
     /* color contrasts */
-    --color-bg: white;
+    --color-text: #777;
+    --color-bg-primary:var(--van-primary-color);;
     --color-contrast-lower: hsl(0, 0%, 95%);
     --color-contrast-low: hsl(240, 1%, 83%);
     --color-contrast-medium: hsl(240, 1%, 48%);
     --color-contrast-high: hsl(240, 4%, 20%);
     --color-shadow:hsl(240, 6%, 70%);
     --color-contrast-higher: black;
-    --color-nav-bg: var(--van-primary-light-color);
+    --color-bg-mix: #fff;
     --color-primary-text:var(--van-primary-light-color);
     
   }
   
   [data-theme="dark"] {
     /* color contrasts */
-    --color-bg: black;
+    --color-bg-primary:black;
+    --color-text: white;
     --color-contrast-lower: hsl(240, 6%, 15%);
     --color-contrast-low: hsl(252, 4%, 25%);
     --color-contrast-medium: hsl(240, 1%, 57%);
     --color-contrast-high: hsl(0, 0%, 89%);
     --color-shadow:hsl(0, 0%, 100%);
     --color-contrast-higher: white;
-    --color-nav-bg: var(--van-primary-dark-color);
+    --color-bg-mix: black;
     --color-primary-text:var(--van-primary-dark-color);
     
 }

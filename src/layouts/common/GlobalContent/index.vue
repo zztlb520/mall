@@ -1,8 +1,6 @@
 <template>
-  <div
-    :class="{ 'p-10px': showPadding }"
-    class="h-full bg-[#f6f9f8] dark:bg-[#101014] transition duration-300 ease-in-out"
-  >
+ <!-- :class="{ 'p-10px': showPadding }" -->
+  <div class="h-full">
     <router-view v-slot="{ Component, route }">
       <transition
         :name="theme.pageAnimateMode"

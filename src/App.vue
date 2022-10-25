@@ -13,7 +13,7 @@ const theme = useThemeStore();
 const darkMode = computed(()=>theme.darkMode ? 'dark' : 'light') ;
 
 const themeVars: ConfigProviderThemeVars = {
-  navBarHeight: '56px'
+  navBarHeight: '46px'
 };
 
 subscribeStore();
