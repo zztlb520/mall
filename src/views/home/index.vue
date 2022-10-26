@@ -1,96 +1,85 @@
 <template>
-  <div class="home pl-15px pr-15px">
-    <header class="relative">
-      <van-swipe class="h-160px w-100% rounded-5px" vertical :autoplay="3000">
-          <van-swipe-item>
-            <van-image width="100%" height="100%" src="./src/assets/home/banna/banna.jpg"/>
-          </van-swipe-item>
-          <van-swipe-item>
-            <van-image width="100%" height="100%" src="./src/assets/home/banna/banna1.jpg"/>
-          </van-swipe-item>
-          <van-swipe-item>
-            <van-image width="100%" height="100%" src="./src/assets/home/banna/banna2.jpg"/>
-          </van-swipe-item>
-          <van-swipe-item>
-            <van-image width="100%" height="100%" src="./src/assets/home/banna/banna3.jpg"/>
-          </van-swipe-item>
-      </van-swipe>
-      <van-notice-bar left-icon="volume-o"
-        text="无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。"
-      />
-    </header>
-    <main>
-        <!-- <div  class="flex-y-center justify-between h-40px text-13px font-bold text-danger_lightest">
-           <span class="flex-y-center">
-                <system-logo class="text-24px pr-2px"/>
-                <span>自营品牌</span>
-            </span>
-           <span class="flex-center">
-                <icon-local-safety class="text-24px pr-2px"/>
-                <span>30天无忧退换</span>
-            </span>
-           <span class="flex-center">
-                <icon-local-refund class="text-24px pr-2px"/>
-                48小时快速退款
-            </span>
-        </div> -->
-        <van-swipe class="w-100% bg-[#fff] dark:bg-[#101014] rounded-10px mb-10px mt-10px pt-10px pb-10px">
-            <van-swipe-item>
-                <div class="flex-y-center justify-between flex-wrap">
-                    <template v-for="(item,index) in quickNavs" :key="index">
-                        <van-space class="w-20% p-10px" direction="vertical" size='0' align="center" fill>
-                            <van-image :src="`./src/assets/home/quickNav/${item.url}.png`" />             
-                            <div class="text-12px text-color">{{item.text}}</div>
+    <div class="home">
+        <header class="relative">
+            <van-swipe class="h-160px w-100% rounded-15px" vertical :autoplay="3000">
+                <template v-for="(item,index) in store.config.bannas" :key="index">
+                    <van-swipe-item>
+                        <van-image width="100%" height="100%" :src="`./src/assets/home/banna/banna${item}.jpg`"/>
+                    </van-swipe-item>
+                </template>
+            </van-swipe>
+            <van-notice-bar left-icon="volume-o" :text="store.config.notifica"/>
+        </header>
+        <main>
+            <van-space direction="vertical" size='10px' fill>
+                <van-swipe class="w-100% bg-[#fff] dark:bg-[#101014] rounded-15px mt-10px pt-10px pb-15px">
+                    <van-swipe-item v-for="(item,index) in store.config.quickNavs" :key="index">
+                        <div class="flex-y-center justify-between flex-wrap">
+                            <template v-for="(item,index) in item" :key="index">
+                                <van-space class="w-20%" direction="vertical" size='0' align="center" fill>
+                                    <van-image class="quickNavImg" :src="`./src/assets/home/quickNav/${item.url}.png`" />             
+                                    <div class="text-12px text-color">{{item.text}}</div>
+                                </van-space>
+                            </template>
+                        </div>
+                    </van-swipe-item>
+                </van-swipe>
+                <div class="w-100% bg-[#fff] dark:bg-[#101014] rounded-15px p-15px">
+                    <div class="flex-y-center justify-between">
+                        <div class="flex-y-center">
+                            <h2 class="text-20px">限量<span class="text-danger">秒杀</span></h2>
+                            <span class="ml-5px mr-5px">|</span>
+                            <span class="text-color text-14px">限时限量抢好物</span>
+                        </div>
+                        <van-count-down use-solt :time="store.config.spike.time">
+                            <template v-slot="timeData">
+                                <span class="block">{{ padZero(timeData.hours) }}</span>
+                                <span class="colon">:</span>
+                                <span class="block">{{ padZero(timeData.minutes) }}</span>
+                                <span class="colon">:</span>
+                                <span class="block">{{ padZero(timeData.seconds) }}</span>
+                            </template>
+                        </van-count-down>
+                    </div>
+                    <div class="flex-y-center justify-between mt-10px">
+                        <template v-for="(item,index) in store.config.spike.url" :key="index">
+                            <img class="w-30% rounded-15px" :src="`./src/assets/home/spike/${item}.jpg`" />
+                        </template>
+                    </div>
+                </div>
+                <div class="flex-y-center justify-between">
+                    <template v-for="(item,index) in store.config.hot" :key="index">
+                        <van-space class="w-31% bg-[#fff] dark:bg-[#101014] rounded-15px pt-10px" direction="vertical" size='10' align="center" fill>
+                            <span>
+                                <b class="text-14px">{{item.title}}</b> 
+                                <span class="hot_tip_bg" v-if="item.isBg">{{item.bgtxt}}</span>
+                            </span>
+                            <span class="text-10px text-color">{{item.tip}}</span>
+                            <img class="h-80px" :src="`./src/assets/home/hot/${item.url}.png`" />
                         </van-space>
                     </template>
                 </div>
-                <!-- <van-grid :border="false" :column-num="5">
-                    <van-grid-item v-for="(item,index) in quickNavs" :key="index" class="p-0px">
-                        <div class="rounded-50% w-55px h-55px bg-[#f6f6f6]"></div>
-                        <div class="mt-5px text-13px">{{item.text}}</div>
-                    </van-grid-item>
-                </van-grid> -->
-            </van-swipe-item>
-            <van-swipe-item>
-                <div class="flex-y-center justify-between flex-wrap">
-                    <template v-for="(item,index) in quickNavs" :key="index">
-                       <van-space class="w-20% p-10px" direction="vertical" size='0' align="center" fill>
-                            <van-image :src="`./src/assets/home/quickNav/${item.url}.png`" />             
-                            <div class="text-12px text-color">{{item.text}}</div>
-                        </van-space>
-                    </template>
-                </div>
-            </van-swipe-item>
-        </van-swipe>
-    </main>
-  </div>
-  
+            </van-space>
+        </main>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-const quickNavs = ref<{text:string,url:string}[]>([
-    { text:'新品首发', url:'appliances'},
-    { text:'居家生活', url:'appliances'},
-    { text:'母亲婴子', url:'appliances'},
-    { text:'个人清洁', url:'appliances'},
-    { text:'新品首发', url:'appliances'},
-    { text:'吃过福利', url:'appliances'},
-    { text:'超级拼团', url:'appliances'},
-    { text:'超值专区', url:'appliances'},
-    { text:'奥莱特卖', url:'appliances'},
-    { text:'pro卡', url:'appliances'}
-])
-// const firstQuickNavs = quickNavs.value.splice(0,5)
-// const secondQuickNavs = quickNavs.value.splice(5,5)
-console.log(quickNavs)
+import { onMounted } from 'vue';
+import { useHomeStore } from '@/store';
+const store = useHomeStore()
+
+function padZero(num:number) {
+    return num < 10 ? '0' + num : num;
+}
+onMounted(async()=>{
+  await store.getAll();
+})
 </script>
 
 <style lang="scss">
  .home{
-    .my-swipe {
-        width: 100%;
-    }
+    padding: 56px 15px 84px 15px;
     .van-notice-bar{
         position: absolute!important;
         width: 100%;
@@ -116,12 +105,40 @@ console.log(quickNavs)
             .van-swipe__indicators{
                 bottom: 5px;
             }
-            .van-grid-item__content{
-                background-color: transparent;
-                padding: 15px 0;
+        }
+        .quickNavImg{
+            text-align: center;
+            img{
+                width: 70%;
+                height: 70%;
+                display: inline-block;
             }
         }
+        .hot_tip_bg{
+            padding: 2px;
+            margin-left: 3px;
+            color: #fff;
+            font-size: 12px;
+            border-radius: 40% 0 40% 0;
+            background-color: var(--van-danger-color);
+        }
+        .colon {
+            display: inline-block;
+            margin: 0 4px;
+            font-weight: bold;
+            color: var(--van-danger-color);
+        }
+        .block {
+            display: inline-block;
+            width: 22px;
+            color: #fff;
+            font-size: 12px;
+            border-radius: 12px;
+            text-align: center;
+            background-color: var(--van-danger-color);
+        }
     }
+    
 }
 
 

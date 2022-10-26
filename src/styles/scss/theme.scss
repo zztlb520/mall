@@ -2,7 +2,10 @@
     background-color: var(--color-bg-primary);
 }
 .bg-primary-Gradient{
-    background-image: linear-gradient(120deg, var(--color-bg-mix) 0%, var(--color-bg-primary) 100%);
+    background-image: linear-gradient(120deg, var(--color-bg-primary) 0%, var(--color-bg-mix) 100%);
+}
+.bg-primary-Gradient-herder{
+    background-image: linear-gradient(9deg, var(--color-bg-primary) 0%, var(--color-bg-mix) 100%);
 }
 
 .text-color{

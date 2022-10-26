@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-y-center justify-between h-56px">
+    <div class="flex-y-center justify-between h-56px fixed z-9 top-0 w-100% bg-primary-Gradient-herder">
         <search />
         <menu-collapse v-if="showMenuCollapse" />
         <dark-mode-switch :dark="theme.darkMode" class="text-20px" @update:dark="theme.setDarkMode"/>
