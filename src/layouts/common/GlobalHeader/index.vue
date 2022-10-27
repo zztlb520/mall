@@ -1,14 +1,20 @@
 <template>
-    <div class="flex-y-center justify-between h-56px fixed z-9 top-0 w-100% bg-primary-Gradient-herder">
-        <search />
-        <menu-collapse v-if="showMenuCollapse" />
-        <dark-mode-switch :dark="theme.darkMode" class="text-20px" @update:dark="theme.setDarkMode"/>
+    <div class="flex-y-center justify-between h-56px fixed z-9 top-0 w-100% overflow-hidden">
+        <search class="z-2"/>
+        <menu-collapse v-if="showMenuCollapse" class="z-2"/>
+        <dark-mode-switch :dark="theme.darkMode" class="text-20px z-2" @update:dark="theme.setDarkMode"/>
+        <global-bg class="h-667px absolute z-1" :themeColor="themeColor" :darkMode="theme.darkMode"/>
     </div>
+    
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useThemeStore } from "@/store";
 import { MenuCollapse, Search } from './components';
+import GlobalBg from '../GlobalBg/index.vue';
+import { getColorPalette } from '@/utils';
+
 interface Props {
   /** 显示logo */
   showLogo: GlobalHeaderProps['showLogo'];
@@ -22,4 +28,5 @@ defineProps<Props>();
 
 const theme = useThemeStore();
 
+const themeColor = computed(() => theme.darkMode ? getColorPalette(theme.themeColor, 8) : theme.themeColor);
 </script>

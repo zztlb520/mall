@@ -12,7 +12,7 @@
         </header>
         <main>
             <van-space direction="vertical" size='10px' fill>
-                <van-swipe class="w-100% bg-[#fff] dark:bg-[#101014] rounded-15px mt-10px pt-10px pb-15px">
+                <van-swipe class="w-100% bg-[#fff] dark:bg-[#333] rounded-15px mt-10px pt-10px pb-15px">
                     <van-swipe-item v-for="(item,index) in store.config.quickNavs" :key="index">
                         <div class="flex-y-center justify-between flex-wrap">
                             <template v-for="(item,index) in item" :key="index">
@@ -24,22 +24,14 @@
                         </div>
                     </van-swipe-item>
                 </van-swipe>
-                <div class="w-100% bg-[#fff] dark:bg-[#101014] rounded-15px p-15px">
+                <div class="w-100% bg-[#fff] dark:bg-[#333] rounded-15px p-10px">
                     <div class="flex-y-center justify-between">
                         <div class="flex-y-center">
                             <h2 class="text-20px">限量<span class="text-danger">秒杀</span></h2>
                             <span class="ml-5px mr-5px">|</span>
                             <span class="text-color text-14px">限时限量抢好物</span>
                         </div>
-                        <van-count-down use-solt :time="store.config.spike.time">
-                            <template v-slot="timeData">
-                                <span class="block">{{ padZero(timeData.hours) }}</span>
-                                <span class="colon">:</span>
-                                <span class="block">{{ padZero(timeData.minutes) }}</span>
-                                <span class="colon">:</span>
-                                <span class="block">{{ padZero(timeData.seconds) }}</span>
-                            </template>
-                        </van-count-down>
+                        <count-down :time="store.config.spike.time"/>
                     </div>
                     <div class="flex-y-center justify-between mt-10px">
                         <template v-for="(item,index) in store.config.spike.url" :key="index">
@@ -49,7 +41,7 @@
                 </div>
                 <div class="flex-y-center justify-between">
                     <template v-for="(item,index) in store.config.hot" :key="index">
-                        <van-space class="w-31% bg-[#fff] dark:bg-[#101014] rounded-15px pt-10px" direction="vertical" size='10' align="center" fill>
+                        <van-space class="w-31% bg-[#fff] dark:bg-[#333] rounded-15px pt-10px" direction="vertical" size='10' align="center" fill>
                             <span>
                                 <b class="text-14px">{{item.title}}</b> 
                                 <span class="hot_tip_bg" v-if="item.isBg">{{item.bgtxt}}</span>
@@ -59,19 +51,32 @@
                         </van-space>
                     </template>
                 </div>
+                <div class="flex-y-center justify-between p-10px">
+                    <div class="flex-y-center">
+                        <h2 class="text-20px">限量<span class="text-danger">抢购</span></h2>
+                        <span class="ml-5px mr-5px">|</span>
+                        <span class="text-color text-14px mr-5px">距离结束</span>
+                        <count-down :time="store.config.spike.time"/>
+                    </div>
+                    <div class="text-color text-14px">更多></div>
+                </div>
             </van-space>
         </main>
+        <global-bg :theme-color="themeColor" :darkMode="theme.darkMode"/>
     </div>
+    
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { useHomeStore } from '@/store';
-const store = useHomeStore()
+import { onMounted, computed } from 'vue';
+import { useHomeStore, useThemeStore } from '@/store';
+import { getColorPalette } from '@/utils';
+import { GlobalBg } from '@/layouts/common';
+const store = useHomeStore();
+const theme = useThemeStore();
 
-function padZero(num:number) {
-    return num < 10 ? '0' + num : num;
-}
+const themeColor = computed(() => theme.darkMode ? getColorPalette(theme.themeColor, 8) : theme.themeColor);
+
 onMounted(async()=>{
   await store.getAll();
 })
@@ -79,6 +84,7 @@ onMounted(async()=>{
 
 <style lang="scss">
  .home{
+    position: relative;
     padding: 56px 15px 84px 15px;
     .van-notice-bar{
         position: absolute!important;
@@ -88,7 +94,7 @@ onMounted(async()=>{
         font-size: 12px;
         color: #fff;
         background: rgba(0, 0, 0, .2);
-        border-radius: 15px 15px 0 0;
+        border-radius: 16px;
         line-height: 26px;
         .van-icon{
             color: var(--van-info-lightest-color);
@@ -122,25 +128,6 @@ onMounted(async()=>{
             border-radius: 40% 0 40% 0;
             background-color: var(--van-danger-color);
         }
-        .colon {
-            display: inline-block;
-            margin: 0 4px;
-            font-weight: bold;
-            color: var(--van-danger-color);
-        }
-        .block {
-            display: inline-block;
-            width: 22px;
-            color: #fff;
-            font-size: 12px;
-            border-radius: 12px;
-            text-align: center;
-            background-color: var(--van-danger-color);
-        }
     }
-    
 }
-
-
-
 </style>

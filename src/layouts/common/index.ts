@@ -3,5 +3,6 @@ import GlobalSider from './GlobalSider/index.vue';
 import GlobalContent from './GlobalContent/index.vue';
 import GlobalFooter from './GlobalFooter/index.vue';
 import GlobalBackTop from './GlobalBackTop/index.vue';
+import GlobalBg from './GlobalBg/index.vue';
 
-export {  GlobalHeader, GlobalSider, GlobalContent, GlobalFooter, GlobalBackTop };
+export {  GlobalHeader, GlobalSider, GlobalContent, GlobalFooter, GlobalBackTop, GlobalBg };

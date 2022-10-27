@@ -34,7 +34,7 @@ interface ColorAction {
 function getThemeColors(colors: [ColorType, string][]) {
   const colorActions: ColorAction[] = [
     { scene: '', handler: color => color },
-    { scene: 'Dark', handler: color => getColorPalette(color,2) },
+    { scene: 'Dark', handler: color => getColorPalette(color,3) },
     { scene: 'Light', handler: color => getColorPalette(color, 5) },
     { scene: 'Lightest', handler: color => getColorPalette(color, 7) },
     { scene: 'Transparency', handler: color => addColorAlpha(color, 0.1) }

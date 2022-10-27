@@ -1,6 +1,6 @@
 <template>
  <!-- :class="{ 'p-10px': showPadding }" -->
-  <div class="h-full">
+  <div class="h-full fixed left-0 right-0 overflow-auto">
     <router-view v-slot="{ Component, route }">
       <transition
         :name="theme.pageAnimateMode"

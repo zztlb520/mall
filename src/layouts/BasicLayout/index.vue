@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-primary-Gradient transition duration-300 ease-in-out">
+    <div class="h-100%">
         <global-header v-bind="headerProps"/>
         <!-- <global-sider/> -->
         <global-content/>
@@ -18,6 +18,7 @@ import {
   GlobalFooter,
   GlobalHeader,
   GlobalSider,
+  GlobalBg
 } from '../common';
 
 defineOptions({ name: 'BasicLayout' });
