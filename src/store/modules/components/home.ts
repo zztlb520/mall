@@ -17,7 +17,10 @@ export const useHomeStore = defineStore('Home-store', {
             time: 0,
             url: []
         },
-        snapUp:[]
+        snapUp:[],
+        recommendTitle:[],
+        recommendMain:[],
+        like:[]
     }
   }),
   actions:{
