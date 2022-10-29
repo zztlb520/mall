@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                         </template>
-                        <h1 class="text-center text-15px leading-40px"><b>猜 • 你 • 喜 • 欢</b></h1>
+                        <h1 class="text-center leading-40px"><b>猜 • 你 • 喜 • 欢</b></h1>
                         <div class="flex-y-center justify-between flex-wrap">
                             <template v-for="(item,index) in store.config.like" :key="index">
                                 <div class="w-48% color-bg rounded-15px mb-10px">
