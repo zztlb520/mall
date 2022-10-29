@@ -1,7 +1,13 @@
 
 :root, [data-theme="default"] {
     /* color contrasts */
-    --color-text: #777;
+    --color-bg:#fff;
+    --color-text: rgb(108, 113, 149);
+    --color-gray: #777;
+    --color-black: #333;
+    /** 商品价格主颜色*/
+    --color-price:#d06667;
+
     --color-bg-primary:var(--van-primary-color);
     --color-contrast-lower: hsl(0, 0%, 95%);
     --color-contrast-low: hsl(240, 1%, 83%);
@@ -16,8 +22,15 @@
   
   [data-theme="dark"] {
     /* color contrasts */
+    --color-bg:#333;
     --color-bg-primary:black;
-    --color-text: white;
+    --color-text: #fff;
+    --color-gray: #c2c0c0;
+    --color-black: #fff;
+
+    /** 商品价格主颜色*/
+    --color-price:#d06667;
+
     --color-contrast-lower: hsl(240, 6%, 15%);
     --color-contrast-low: hsl(252, 4%, 25%);
     --color-contrast-medium: hsl(240, 1%, 57%);
@@ -26,5 +39,4 @@
     --color-contrast-higher: white;
     --color-bg-mix: black;
     --color-primary-text:var(--van-primary-dark-color);
-    
 }
