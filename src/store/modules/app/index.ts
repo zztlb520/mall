@@ -8,13 +8,16 @@ interface AppState {
     settingDrawerVisible: boolean;
     /** 侧边栏折叠状态 */
     siderCollapse: boolean;
+    /** 顶部状态栏可见状态 */
+    headerNavShow: boolean;
 }
 
 export const useAppStore = defineStore('app-store', {
     state: (): AppState => ({
         reloadFlag: true,
         settingDrawerVisible: false,
-        siderCollapse: false
+        siderCollapse: false,
+        headerNavShow: true
     }),
     actions: {
         /**
@@ -50,6 +53,14 @@ export const useAppStore = defineStore('app-store', {
         /** 关闭设置抽屉 */
         closeSettingDrawer() {
             this.settingDrawerVisible = false;
+        },
+        /** 隐藏顶部状态栏 */
+        hideHeaderNav() {
+            this.headerNavShow = false;
+        },
+        /** 隐藏顶部状态栏 */
+        showHeaderNav() {
+            this.headerNavShow = true;
         },
         /** 切换抽屉可见状态 */
         toggleSettingDrawerVisible() {

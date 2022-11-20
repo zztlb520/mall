@@ -1,6 +1,6 @@
 <template>
     <div class="h-100%">
-        <global-header v-bind="headerProps"/>
+        <global-header v-bind="headerProps" v-if="app.headerNavShow"/>
         <!-- <global-sider/> -->
         <global-content/>
         <global-footer/>
@@ -25,6 +25,7 @@ defineOptions({ name: 'BasicLayout' });
 
 const app = useAppStore();
 const theme = useThemeStore();
+
 
 const { headerProps } = useBasicLayout();
 

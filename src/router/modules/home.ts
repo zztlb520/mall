@@ -3,7 +3,7 @@ const home: AuthRoute.Route = {
     path: '/home',
     component: 'self',
     meta: {
-      title: '关于',
+      title: '首页',
       requiresAuth: true,
       singleLayout: 'basic',
       permissions: ['user','tourists','trial']

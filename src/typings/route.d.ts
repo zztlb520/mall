@@ -9,6 +9,7 @@ declare namespace AuthRoute {
         | 'root' // 根路由
         | 'login'
         | 'home'
+        | 'user'
         | 'not-found'
         | 'not-found-page' // 捕获无效path的路由
         | 'about';

@@ -2,7 +2,7 @@
     <div class="GlobalFooter">
         <div id="tabbar">
             <ul>
-                <li v-for="(item,index) in items" :key="index" :class="index==activeLi ? 'active':''">
+                <li v-for="(item,index) in items" :key="index" @click="routerPush(item.router)" :class="index==activeLi ? 'active':''">
                     <button>
                         <svg>
                             <use :xlink:href="item.icon"/>
@@ -60,14 +60,17 @@
 <script setup>
 import gsap from "gsap";
 import { ref, onMounted } from 'vue';
+import { useRouterPush } from '@/composables';
+
+const { routerPush } = useRouterPush();
 
 const { to, set, registerPlugin } = gsap;
 registerPlugin(MorphSVGPlugin);
 const items = [
-    { icon:'#icon-home', icon1:'#icon-home-filled' },
-    { icon:'#icon-chat', icon1:'#icon-chat-filled' },
-    { icon:'#icon-folder', icon1:'#icon-folder-filled' },
-    { icon:'#icon-user', icon1:'#icon-user-filled' },
+    { icon:'#icon-home', icon1:'#icon-home-filled', router:'/home' },
+    { icon:'#icon-chat', icon1:'#icon-chat-filled', router:'/home' },
+    { icon:'#icon-folder', icon1:'#icon-folder-filled', router:'/home' },
+    { icon:'#icon-user', icon1:'#icon-user-filled', router:'/user' },
 ]
 const activeLi = ref(0) 
 onMounted(()=>{
@@ -81,7 +84,7 @@ onMounted(()=>{
     button.addEventListener('click', e => {
 
     activeLi.value = index
-
+    console.log(e)
     let active = tabbar.querySelector('li.active'),
     
     left = entry.offsetLeft + entry.offsetWidth / 2 - (indicator.getBBox().width/2) + 'px';
