@@ -11,7 +11,7 @@ const keyWord = ref()
 .search{
     border-radius: 20px;
     padding: 3px 10px;
-    margin-left: 13px;
-    width: 80%;
+    /* margin-left: 13px; */
+    width: 90%;
 }
 </style>

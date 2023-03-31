@@ -1,6 +1,6 @@
 <template>
  <!-- :class="{ 'p-10px': showPadding }" -->
-  <div class="h-full fixed inset-0 bg-[#f6f9f8] dark:bg-[#101014] overflow-auto">
+  <div class="h-full inset-0 bg-[#f6f9f8] dark:bg-[#101014]">
     <router-view v-slot="{ Component, route }">
       <transition
         :name="theme.pageAnimateMode"
