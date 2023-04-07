@@ -13,6 +13,7 @@
       "noUnusedLocals": true,
       "strictNullChecks": true,
       "forceConsistentCasingInFileNames": true,
+			"allowJs": true,
       "paths": {
         "~/*": ["./*"],
         "@/*": ["./src/*"]
@@ -21,4 +22,3 @@
     },
     "exclude": ["node_modules", "dist"]
   }
-  

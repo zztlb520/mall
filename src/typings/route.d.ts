@@ -10,6 +10,8 @@ declare namespace AuthRoute {
         | 'login'
         | 'home'
         | 'user'
+				| 'shop'
+				| 'chat'
         | 'not-found'
         | 'not-found-page' // 捕获无效path的路由
         | 'about';

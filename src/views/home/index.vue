@@ -1,12 +1,13 @@
 <template>
-    <div class="h-100%">
+    <div class="relative p-t-56px h-100%">
         <global-header v-bind="headerProps" v-if="app.headerNavShow"/>
-        <div class="relative pt-56px h-100%">
-            <van-pull-refresh class="h-100%" v-model="store.loading" disabled :head-height="80" @refresh="onRefresh">
+				<global-bg :theme-color="themeColor" :darkMode="theme.darkMode"/>
+        <div class="h-100%">
+            <van-pull-refresh v-model="store.loading" :head-height="80" @refresh="onRefresh">
                 <template #loading>
                 <pull-loading/>
                 </template>
-                <div class="home h-100% overflow-auto">
+                <div class="home h-100% overflow-y-auto">
                     <header class="relative">
                         <van-swipe class="h-154px w-100% rounded-15px" vertical :autoplay="3000">
                             <template v-for="(item,index) in store.config.bannas" :key="index">
@@ -24,7 +25,7 @@
                                     <div class="flex-y-center justify-between flex-wrap">
                                         <template v-for="(item,index) in item" :key="index">
                                             <van-space class="w-20%" direction="vertical" size='0' align="center" fill>
-                                                <van-image class="quickNavImg" :src="`./src/assets/home/quickNav/${item.url}.png`" />             
+                                                <van-image class="quickNavImg" :src="`./src/assets/home/quickNav/${item.url}.png`" />
                                                 <div class="text-12px text-color">{{item.text}}</div>
                                             </van-space>
                                         </template>
@@ -50,7 +51,7 @@
                                 <template v-for="(item,index) in store.config.hot" :key="index">
                                     <van-space class="w-31% color-bg rounded-15px pt-10px" direction="vertical" size='10' align="center" fill>
                                         <span>
-                                            <b class="text-14px">{{item.title}}</b> 
+                                            <b class="text-14px">{{item.title}}</b>
                                             <span class="hot_tip_bg" v-if="item.isBg">{{item.bgtxt}}</span>
                                         </span>
                                         <span class="text-10px color-gray">{{item.tip}}</span>
@@ -83,7 +84,7 @@
                                             <span class="text-14px">{{item.tip}}</span>
                                             <van-progress class="progress" :pivot-text="`已抢购${item.num}%`" :percentage="item.num" stroke-width="15" />
                                             <div class="flex-y-center justify-between text-20px">
-                                                <div> 
+                                                <div>
                                                     <b class="color-price mr-10px">￥{{item.specialPrice}}</b>
                                                     <span class="color-gray text-14px line-through">￥${{item.price}}</span>
                                                 </div>
@@ -140,7 +141,7 @@
                             <div class="flex-y-center justify-between flex-wrap">
                                 <template v-for="(item,index) in store.config.like" :key="index">
                                     <div class="w-48% color-bg rounded-15px mb-10px">
-                                        <img class="w-100% rounded-t-15px" :src="`./src/assets/home/like/${item.url}`"/>      
+                                        <img class="w-100% rounded-t-15px" :src="`./src/assets/home/like/${item.url}`"/>
                                         <div class="h-100px px-8px">
                                             <div class="text-13px flex-y-center h-60px">{{item.tip}}</div>
                                             <div class="flex-y-center justify-between">
@@ -157,8 +158,7 @@
                         </van-space>
                     </main>
                 </div>
-            </van-pull-refresh>
-            <global-bg :theme-color="themeColor" :darkMode="theme.darkMode"/>
+          </van-pull-refresh>
         </div>
     </div>
 </template>

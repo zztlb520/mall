@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="h-full">
         <!-- <global-sider/> -->
         <global-content/>
         <global-footer/>

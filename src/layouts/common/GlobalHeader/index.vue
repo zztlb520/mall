@@ -1,11 +1,11 @@
 <template>
-    <div class="flex-y-center justify-between h-56px fixed z-9 top-0 w-100% overflow-hidden p-x-13px">
+    <div class="flex-y-center z--1 justify-between h-56px fixed z-9 top-0 w-100% overflow-hidden p-x-13px">
         <search class="z-2"/>
         <!-- <menu-collapse v-if="showMenuCollapse" class="z-2"/> -->
         <dark-mode-switch :dark="theme.darkMode" class="text-20px z-2" @update:dark="theme.setDarkMode"/>
         <global-bg class="h-667px absolute z-1" :themeColor="themeColor" :darkMode="theme.darkMode"/>
     </div>
-    
+
 </template>
 
 <script setup lang="ts">
