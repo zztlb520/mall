@@ -26,7 +26,6 @@ export async function createPermissionGuard(
       isLogin && to.name === routeName('login'),
       
       () => {
-        console.log(1)
         next({ name: routeName('root') });
       }
     ],
@@ -34,7 +33,6 @@ export async function createPermissionGuard(
     [
       !needLogin,
       () => {
-        console.log(2)
         next();
       }
     ],
@@ -42,7 +40,6 @@ export async function createPermissionGuard(
     [
       !isLogin && needLogin,
       () => {
-        console.log(3)
         const redirect = to.fullPath;
         next({ name: routeName('login'), query: { redirect } });
       }
@@ -51,7 +48,6 @@ export async function createPermissionGuard(
     [
       isLogin && needLogin && hasPermission,
       () => {
-        console.log(4)
         next();
       }
     ],
@@ -60,7 +56,6 @@ export async function createPermissionGuard(
       isLogin && needLogin && !hasPermission,
       () => {
         // next({ name: routeName('no-permission') });
-        console.log(5)
         console.log('no-permission')
       }
     ]

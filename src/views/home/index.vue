@@ -181,8 +181,8 @@ function onRefresh(){
         store.getAll();
     },1500)
 }
-onMounted(async()=>{
-  await store.getAll();
+onMounted(()=>{
+   store.getAll();
 })
 </script>
 
