@@ -7,8 +7,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useThemeStore } from "@/store";
 
 defineOptions({ name: 'DarkModeSwitch' });
+
+const theme = useThemeStore();
 
 interface Props {
   /** 暗黑模式 */
@@ -36,6 +39,7 @@ const darkMode = computed({
 
 function handleSwitch() {
   darkMode.value = !darkMode.value;
+  theme.cacheThemeSettings()
 }
 </script>
 

@@ -33,7 +33,7 @@
       />
     </svg>
   </div>
-  <div class="w-340px z--1" style="filter: url('#outline';">
+  <div class="w-340px z--1" style="filter: url('#outline')">
     <svg viewBox="0 0 750 98" :fill="bgColor">
       <path
         d="M556,1296c33.1-.87,50.842-22.39,58-31,7.7-9.44,21.891-30.02,41.127-30,138.95,0.14,255.873,0,255.873,0a20,20,0,0,1,20,20v78H556m0,0H181v-78a20,20,0,0,1,20-20s116.923,0.14,255.873,0c19.236-.02,33.43,20.56,41.127,30,7.158,8.61,24.9,30.13,58,31"
@@ -137,6 +137,18 @@ withDefaults(defineProps<Props>(), {
     opacity: 1;
     transition: opacity 1s;
   }
+	$oscillaFilos: "@-webkit-keyframes", "@-moz-keyframes", "@-ms-keyframes", "@-o-keyframes", "@-keyframes";
+
+	// @each $class in $oscillaFilos {
+  //    #{$class} oscillaLampadina {
+	// 		from {
+	// 			-moz-transform: rotate(3deg) translate(-10.4px, -1px);
+	// 		}
+	// 		to {
+	// 			-moz-transform: rotate(-3deg) translate(10.4px, -1px);
+	// 		}
+	// 	}
+  // }
 
   @-webkit-keyframes oscillaFilo {
     from {
@@ -177,7 +189,7 @@ withDefaults(defineProps<Props>(), {
     to {
       transform: rotate(-5deg);
     }
-  }
+  } 
   @-webkit-keyframes oscillaLampadina {
     from {
       -webkit-transform: rotate(3deg) translate(-10.4px, -1px);
@@ -216,7 +228,7 @@ withDefaults(defineProps<Props>(), {
     }
     to {
       transform: rotate(-3deg) translate(10.4px, -1px);
-      
+
     }
   }
 }

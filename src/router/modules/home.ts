@@ -5,6 +5,7 @@ const home: AuthRoute.Route = {
     meta: {
       title: '首页',
       requiresAuth: true,
+	  keepAlive: false,
       singleLayout: 'basic',
       permissions: ['user','tourists','trial']
     }

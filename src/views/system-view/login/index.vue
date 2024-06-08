@@ -4,7 +4,7 @@
       :dark="theme.darkMode"
       class="absolute left-48px top-24px z-9 text-20px"
       @update:dark="theme.setDarkMode"/>
-    <div class="z-4 !w-auto shadow-sm">
+    <div class="z-4 !w-auto shadow-sm ">
         <div class="w-340px">
             <header class="flex-y-center flex-col justify-between">
                 <logo :bgColor="bgColor" :darkMode="theme.darkMode" :themeColor="theme.themeColor" :vantThemeInversion="theme.vantThemeInversion"/>

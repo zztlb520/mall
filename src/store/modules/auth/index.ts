@@ -56,10 +56,10 @@ export const useAuthStore = defineStore('auth-store', {
         toLoginRedirect();
 
         // 登录成功弹出欢迎提示
-        window.$notification?.success({
-          title: '登录成功!',
-          content: `欢迎回来，${this.userInfo.userName}!`,
-          duration: 3000
+        window.$notify({
+			type: 'success',
+			message: `欢迎回来，${this.userInfo.userName}!`,
+			duration: 3000
         });
 
         return;

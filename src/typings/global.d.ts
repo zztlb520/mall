@@ -1,3 +1,10 @@
+import { showDialog, showNotify, showToast } from 'vant';
+interface Window {
+    $dialog?: typeof showDialog;
+    $toast?: typeof showToast;
+    $notify?: typeof showNotify;
+}
+
 /** 通用类型 */
 declare namespace Common {
     /**

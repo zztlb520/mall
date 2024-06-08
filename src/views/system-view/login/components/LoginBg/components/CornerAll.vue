@@ -5,8 +5,8 @@
     width="100%"
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"
-    viewBox="0,0,375,667"
-    preserveAspectRatio="xMinYMin meet"
+    viewBox="0,0,375,675"
+    preserveAspectRatio="none meet"
   >
     <g transform-origin="center" transform="rotate(180)">
       <rect x="0" y="0" height="100%" width="100%" :fill="fillColor"></rect>
@@ -14,7 +14,7 @@
         <stop offset="0" :stop-color="startColor" stop-opacity="1" />
         <stop offset="1" :stop-color="endColor" stop-opacity="1" />
       </linearGradient>
-      <filter id="shadow-r1" x="0" width="100%" y="-20%" height="150%">
+      <filter id="shadow-r1" x="0" width="100%" y="0%" height="100%">
         <feDropShadow
           dx="1"
           dy="1"
@@ -60,6 +60,7 @@
 </template>
 
 <script lang="ts" setup>
+import { vwToPx } from '@/utils/common/pattern';
 interface Props {
   /** 过渡的开始颜色 */
   startColor?: string;

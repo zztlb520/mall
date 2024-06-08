@@ -36,6 +36,7 @@ export const useThemeStore = defineStore('theme-store', {
       if (isProd) {
         setThemeSettings(this.$state);
       }
+	  setThemeSettings(this.$state);
     },
     /** 设置暗黑模式 */
     setDarkMode(darkMode: boolean) {

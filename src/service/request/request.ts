@@ -117,7 +117,7 @@ export function createHookRequest(axiosConfig: AxiosRequestConfig, backendConfig
         const { bool: network, setBool: setNetwork } = useBoolean(window.navigator.onLine);
 
         startLoading();
-        const data = ref(<T | null>(null) as Ref<T | null>);
+        const data = ref<T | null>(null) as Ref<T | null>;
         const error = ref<Service.RequestError | null>(null);
 
         function handleRequestResult(response: any) {

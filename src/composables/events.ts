@@ -7,6 +7,7 @@ export function useGlobalEvents() {
 
   /** 页面离开时缓存多页签数据 */
   useEventListener(window, 'beforeunload', () => {
-    theme.cacheThemeSettings();
+	// theme.resetThemeStore();
+    // theme.cacheThemeSettings();
   });
 }
