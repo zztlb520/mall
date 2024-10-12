@@ -48,6 +48,8 @@ declare namespace AuthRoute {
         permissions?: Auth.RoleType[];
         /** 缓存页面 */
         keepAlive?: boolean;
+		/**顶部导航栏配置 */
+		hederConfig?: HederConfig
         /** 菜单和面包屑对应的图标(iconify图标名称) */
         // icon?: string;
         // /** 使用本地svg作为的菜单和面包屑对应的图标(assets/svg-icon文件夹的的svg文件名) */
@@ -124,4 +126,15 @@ declare namespace AuthRoute {
     type GetRouteFirstParentKey<Key extends RouteKey> = Key extends `${infer Left}${RouteSplitMark}${infer _Right}`
         ? Left
         : never;
+
+	type HederConfig = {
+		/**显示切换暗黑模式 */
+		showDarkSwitch?: boolean,
+		/**显示搜索框 */
+		showSearch?:boolean,
+		/**显示菜单折叠按钮 */
+		showMenuCollapse?: boolean,
+		/** 自定义背景 */
+		showGlobalBg?: boolean
+	}
 }

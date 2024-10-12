@@ -1,32 +1,54 @@
+$N1:#F7F8FA; //背景颜色
+$N2:#F2F3F5; //背景颜色
+$N3:#EBEDF0; //边框。线色
+$N4:#DCDEE0; //边框。线色
+$N5:#C8C9CC; //文字色，指disable  指示文字等
+$N6:#969799; //文字色，辅助、说明文字
+$N7:#646566; //文字色，指主文字2
+$N8:#323233; //文字色，指主文字1
+$B:#000000; //黑色
+$W:#000000; //白色
+// 功能色
+$link:#576B95; //文字链接色
+$success:#07C160; //成功色
+$error:#EE0A24; //爆错色
+$O4: #ED6A0C; //通知消息中的文本颜色
+$Y1: #FFFBE8; //通知消息中的背景颜色
+$CY4: #FAAB0C; //文字辅助颜色
 
+:root {
+	--foot-h: 64px
+}
 :root, [data-theme="default"] {
     /* color contrasts */
-    --color-bg:#fff;
-    --color-text: rgb(108, 113, 149);
-    --color-gray: #777;
-    --color-black: #333;
+    --kaya-bg: #F7F8FA;
+    --kaya-text: #323233;
+    --kaya-gray: #777;
+    --kaya-black: #333;
     /** 商品价格主颜色*/
     --color-price:#d06667;
-
-    --color-bg-primary:var(--van-primary-color);
-    --color-contrast-lower: hsl(0, 0%, 95%);
-    --color-contrast-low: hsl(240, 1%, 83%);
-    --color-contrast-medium: hsl(240, 1%, 48%);
-    --color-contrast-high: hsl(240, 4%, 20%);
-    --color-shadow:hsl(240, 6%, 70%);
+    --kaya-bg-primary:var(--van-primary-color);
+    --color-contrast-lower: #f2f2f2;
+    --color-contrast-low: #d3d3d4;
+    --color-contrast-medium: #79797c;
+    --color-contrast-high: #313135;
+    --color-shadow:#aeaeb7;
     --color-contrast-higher: black;
-    --color-bg-mix:var(--van-primary-dark-color);
+    --kaya-bg-mix:var(--van-primary-dark-color);
     --color-primary-text:var(--van-primary-light-color);
-    
+
+	/**遮罩层 背景透明度*/
+	--van-overlay-background:rgba(0, 0, 0, .5);
+
   }
-  
+
   [data-theme="dark"] {
     /* color contrasts */
-    --color-bg:#333;
-    --color-bg-primary:black;
-    --color-text: #fff;
-    --color-gray: #c2c0c0;
-    --color-black: #fff;
+    --kaya-bg:#333;
+    --kaya-bg-primary:black;
+    --kaya-text: #fff;
+    --kaya-gray: #c2c0c0;
+    --kaya-black: #fff;
 
     /** 商品价格主颜色*/
     --color-price:#d06667;
@@ -37,6 +59,9 @@
     --color-contrast-high: hsl(0, 0%, 89%);
     --color-shadow:hsl(0, 0%, 100%);
     --color-contrast-higher: white;
-    --color-bg-mix: black;
+    --kaya-bg-mix: black;
     --color-primary-text:var(--van-primary-dark-color);
+
+	/**遮罩层 背景透明度*/
+	--van-overlay-background:rgba(0, 0, 0, .3);
 }

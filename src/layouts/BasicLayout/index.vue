@@ -1,6 +1,7 @@
 <template>
     <div class="h-full">
-        <!-- <global-sider/> -->
+		
+        <global-sider/>
         <global-content/>
         <global-footer/>
         <!-- <global-back-top /> -->
@@ -8,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+
 import {
   GlobalBackTop,
   GlobalContent,
@@ -16,6 +18,7 @@ import {
 } from '../common';
 
 defineOptions({ name: 'BasicLayout' });
+
 
 </script>
 

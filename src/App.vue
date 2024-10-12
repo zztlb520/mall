@@ -6,6 +6,8 @@
 
 <script setup lang="ts">
 import  { type ConfigProviderThemeVars, showToast, showDialog, showNotify } from 'vant';
+import ElNotification from '@/hooks/notification/index';
+// import '@/hooks/notification/style';
 import { subscribeStore, useThemeStore } from '@/store';
 import { useGlobalEvents } from '@/composables';
 import { computed } from '@vue/runtime-core';
@@ -17,7 +19,7 @@ function registerNaiveTools() {
 	// window.$loadingBar = useLoadingBar();
 	window.$dialog = showDialog;
 	window.$toast = showToast;
-	window.$notify = showNotify;
+	window.$notify = ElNotification;
 }
 const themeVars: ConfigProviderThemeVars = {
   navBarHeight: '46px',

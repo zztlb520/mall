@@ -69,10 +69,10 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 
 import { debounce } from '@/utils/common/common'
-import { router as globalRouter } from '@/router';
+import  { useRoute } from 'vue-router';
 import { useRouterPush } from '@/composables';
 
 interface Nav {
@@ -82,6 +82,8 @@ interface Nav {
 }
 
 const { routerPush } = useRouterPush();
+
+const route = useRoute();
 
 const { to, set, registerPlugin } = gsap;
 registerPlugin(MorphSVGPlugin);
@@ -94,24 +96,28 @@ const items = Array<Nav>(
 )
 const activeLi = ref(0);
 
-const route = globalRouter;
-
-
 const handleTo = (router: AuthRoute.RoutePath,index:number) => {
 	if (activeLi.value == index) return;
-	init(false,index)
+	console.log(router)
 	routerPush(router)
 }
-
 const handleToDebounce = debounce(handleTo,100)
-
+watch(route, newValue => {
+	const i = items.findIndex((item)=>item.router==newValue.path);
+	if(i>=0) activeLi.value = i;
+	init(false, activeLi.value)
+});
 
 const tabbarRef = ref<HTMLElement>();
 const indicatorRef = ref<SVGGraphicsElement>();
 const listRef = ref<HTMLElement>();
 const listEntriesRef = ref<HTMLElement[]>()
 onMounted(() => {
-	init(true)
+	if(route.path != items[0].router){
+		const i = items.findIndex((item)=>item.router==route.path);
+		if(i>0) activeLi.value = i;
+	}
+	init(true,activeLi.value)
 })
 
 const init = (firstTime: boolean = false,index:number=0) => {
@@ -192,10 +198,10 @@ const init = (firstTime: boolean = false,index:number=0) => {
 	bottom: 0;
 	left: 0;
 	right: 0;
-
+	z-index: 99;
 	#tabbar {
 		--c-color: var(--van-primary-color);
-		--c-background: var(--color-bg);
+		--c-background: var(--kaya-bg);
 		--indicator-x: 12px;
 		--indicator-circle-o: 1;
 		--indicator-circle-y: 0px;
@@ -210,11 +216,11 @@ const init = (firstTime: boolean = false,index:number=0) => {
 
 #tabbar .indicator {
 	position: absolute;
-	z-index: 4px;
+	z-index: 4;
 	left: 0;
 	bottom: 0;
 	display: block;
-	height: 64px;
+	height: var(--foot-h);
 	fill: var(--c-color);
 	transform: translateX(var(--indicator-x));
 }
@@ -231,7 +237,7 @@ const init = (firstTime: boolean = false,index:number=0) => {
 #tabbar ul {
 	margin: 0;
 	list-style: none;
-	height: 64px;
+	height: var(--foot-h);
 	display: flex;
 	overflow: hidden;
 	justify-content: space-around;

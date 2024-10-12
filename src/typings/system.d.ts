@@ -70,7 +70,7 @@ declare namespace Service {
         ? MultiRequestResult<Rest>
         : []
         : [];
-    
+
     /** 请求结果的适配器函数 */
     type ServiceAdapter<T = any, A extends any[] = any> = (...args: A) => T;
 
@@ -113,6 +113,8 @@ declare namespace Theme {
       themeColorList: string[];
       /** 其他颜色 */
       otherColor: OtherColor;
+	  /**vip 背景墙 */
+	  vipColorList: string[];
       /** 是否自定义info的颜色(默认取比主题色深一级的颜色) */
       isCustomizeInfoColor: boolean;
       /** 固定头部和导航栏 */
@@ -141,7 +143,7 @@ declare namespace Theme {
       value: EnumType.EnumTemplate;
       label: import('@/enum').EnumTemplate;
     }
-  
+
     /** 其他主题颜色 */
     interface OtherColor {
       /** 信息 */
@@ -153,7 +155,6 @@ declare namespace Theme {
       /** 错误 */
       danger: string;
     }
-  
     /** 头部样式 */
     interface Header {
       /** 头部反转色 */
@@ -168,7 +169,7 @@ declare namespace Theme {
       /** 显示图标 */
       showIcon: boolean;
     }
-  
+
     /** 侧边栏样式 */
     interface Sider {
       /** 侧边栏反转色 */
@@ -184,7 +185,7 @@ declare namespace Theme {
       /** vertical-mix模式下侧边栏的子菜单的宽度 */
       mixChildMenuWidth: number;
     }
-  
+
     /** 底部样式 */
     interface Footer {
       /** 是否固定底部 */
@@ -192,7 +193,7 @@ declare namespace Theme {
       /** 底部高度 */
       height: number;
     }
-  
+
     /** 页面样式 */
     interface Page {
       /** 页面是否开启动画 */
@@ -214,6 +215,8 @@ declare namespace Theme {
     showLogo: boolean;
     /** 显示头部菜单 */
     showHeaderMenu: boolean;
+	/**显示搜索框 */
+	showSearch:boolean
     /** 显示菜单折叠按钮 */
     showMenuCollapse: boolean;
 }

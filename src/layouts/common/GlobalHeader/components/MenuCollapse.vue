@@ -1,5 +1,5 @@
 <template>
-  <hover-container class="w-40px h-full">
+  <hover-container class="w-20px h-full" @click="app.toggleSiderCollapse">
     <icon-line-md-menu-unfold-left v-if="app.siderCollapse" class="text-20px" />
     <icon-line-md-menu-fold-left v-else class="text-20px" />
   </hover-container>

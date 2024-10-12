@@ -1,6 +1,7 @@
+@import './font.css';
 @import './transition.css';
 @import './reset.css';
-
+@import '@/assets/font/icon-ali/iconfont.css';
 html, body, #app {
 	height: 100%;
 }

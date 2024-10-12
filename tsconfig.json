@@ -11,7 +11,7 @@
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "noUnusedLocals": true,
-      "strictNullChecks": true,
+      "strictNullChecks": false,
       "forceConsistentCasingInFileNames": true,
 			"allowJs": true,
       "paths": {

@@ -1,0 +1,93 @@
+{
+  "id": "4706335",
+  "name": "xiao_du_mall",
+  "font_family": "iconfont",
+  "css_prefix_text": "ali-",
+  "description": "小肚子商城",
+  "glyphs": [
+    {
+      "icon_id": "2162719",
+      "name": "换肤",
+      "font_class": "skin-change",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "1164283",
+      "name": "我的钱包1",
+      "font_class": "my-wallet",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "1212288",
+      "name": "收货地址",
+      "font_class": "delivery-address",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "5599595",
+      "name": "优惠卷",
+      "font_class": "coupons",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "7146368",
+      "name": "在线客服",
+      "font_class": "service",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "7999874",
+      "name": "会员权益",
+      "font_class": "vip-benefits",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "24111620",
+      "name": "意见反馈",
+      "font_class": "feedback",
+      "unicode": "fb0c",
+      "unicode_decimal": 64268
+    },
+    {
+      "icon_id": "10547160",
+      "name": "待付款",
+      "font_class": "awit-pay",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "1212411",
+      "name": "退换货",
+      "font_class": "after-sales",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "2681678",
+      "name": "待收货",
+      "font_class": "awit-receipt",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "25370562",
+      "name": "待评价",
+      "font_class": "awit-comment",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "1797743",
+      "name": "我的订单",
+      "font_class": "my-order",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    }
+  ]
+}

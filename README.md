@@ -22,3 +22,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### 图片库地址
+See [iconify Freedom to choose icons](https://icon-sets.iconify.design)

@@ -21,6 +21,7 @@ export function getLayoutComponent(layoutType: EnumType.LayoutComponentName) {
  * @param routeKey - 路由key
  */
 export function getViewComponent(routeKey: AuthRoute.RouteKey) {
+	console.log(routeKey)
   if (!views[routeKey]) {
     window.console.error(`路由“${routeKey}”没有对应的组件文件！`);
   }

@@ -1,28 +1,32 @@
 .bg-primary{
-    background-color: var(--color-bg-primary);
+    background-color: var(--kaya-bg-primary);
 }
 .bg-primary-Gradient{
-    background-image: linear-gradient(120deg, var(--color-bg-primary) 0%, var(--color-bg-mix) 100%);
+    background-image: linear-gradient(120deg, var(--kaya-bg-primary) 0%, var(--kaya-bg-mix) 100%);
 }
 .bg-primary-Gradient-herder{
-    background-image: linear-gradient(9deg, var(--color-bg-primary) 0%, var(--color-bg-mix) 100%);
+    background-image: linear-gradient(9deg, var(--kaya-bg-primary) 0%, var(--kaya-bg-mix) 100%);
 }
-
-.text-color{
-    color: var(--color-text)
+.theme-text{
+	color: var(--color-primary-text);
 }
-.color-gray{
-    color: var(--color-gray)
+/**白色/黑色*/ //文案
+.kaya-text{
+    color: var(--kaya-text)
 }
-.color-black{
-    color: var(--color-black)
+//灰色  文案
+.kaya-gray{
+    color: var(--kaya-gray)
 }
+//黑色/白色 文案
+.kaya-black{
+    color: var(--kaya-black)
+}
+// 商品价目 文案
 .color-price{
     color: #d06667;
 }
-.text-wihte{
-    color: #fff;
-}
-.color-bg{
-    background: var(--color-bg);
+//白色 / 黑色 背景底 在暗黑模式下 分块颜色
+.kaya-bg{
+    background: var(--kaya-bg);
 }

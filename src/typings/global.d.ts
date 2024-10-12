@@ -1,10 +1,12 @@
-import { showDialog, showNotify, showToast } from 'vant';
-interface Window {
-    $dialog?: typeof showDialog;
-    $toast?: typeof showToast;
-    $notify?: typeof showNotify;
+import { showDialog, showToast } from 'vant';
+import ElNotification from '@/hooks/notification/index';
+declare global {
+	interface Window {
+		$dialog?: typeof showDialog;
+		$toast?: typeof showToast;
+		$notify?: typeof ElNotification;
+	}
 }
-
 /** 通用类型 */
 declare namespace Common {
     /**

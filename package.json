@@ -7,7 +7,6 @@
     "Vue3",
     "Vite3",
     "Vite",
-    "vite-admin",
     "TypeScript",
     "TS",
     "vant-ui",
@@ -22,7 +21,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@iconify/json": "^2.1.121",
+    "@iconify/json": "^2.2.217",
     "@unocss/preset-uno": "^0.45.25",
     "@unocss/vite": "^0.45.26",
     "@vitejs/plugin-vue": "^3.1.0",
@@ -40,7 +39,7 @@
     "rollup-plugin-visualizer": "^5.8.2",
     "unplugin-icons": "^0.14.10",
     "unplugin-vue-macros": "^0.11.2",
-    "vant": "^4.9.0",
+    "vant": "^4.9.6",
     "vite": "^3.1.4",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
@@ -54,6 +53,7 @@
     "vue3-virtually-list": "^1.0.11"
   },
   "devDependencies": {
+    "@iconify/vue": "^4.1.2",
     "@types/crypto-js": "^4.1.1",
     "@types/lodash-es": "^4.17.6",
     "@vue/cli-plugin-babel": "~5.0.0",

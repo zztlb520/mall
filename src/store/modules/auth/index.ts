@@ -6,6 +6,7 @@ import { useRouterPush } from '@/composables';
 import { clearAuthStorage, getToken, getUserInfo, setRefreshToken, setToken, setUserInfo } from '@/utils';
 import { useRouteStore } from '../route';
 
+
 interface AuthState {
   /** 用户信息 */
   userInfo: Auth.UserInfo;
@@ -56,10 +57,10 @@ export const useAuthStore = defineStore('auth-store', {
         toLoginRedirect();
 
         // 登录成功弹出欢迎提示
-        window.$notify({
-			type: 'success',
-			message: `欢迎回来，${this.userInfo.userName}!`,
-			duration: 3000
+        window.$notify.success({
+			title: 'Info',
+			message: 'This is a message without close button',
+			showClose: false,
         });
 
         return;

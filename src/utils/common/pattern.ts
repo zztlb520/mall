@@ -26,5 +26,5 @@ export const pxToVw = (px: number): number => {
  * @constructor
  */
 export const vwToPx = (vw: number): number => {
-	return (document.documentElement.clientWidth / 375) * vw
+	return (document.documentElement.clientWidth / 100) * vw
 }

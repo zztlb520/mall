@@ -1,11 +1,12 @@
 <template>
   <div class="flex-center text-18px cursor-pointer" @click="handleSwitch">
-    <icon-mdi-moon-waning-crescent v-if="darkMode" />
-    <icon-mdi-white-balance-sunny v-else />
+    <icon-line-md-moon-filled-loop v-if="darkMode" />
+    <icon-line-md-moon-filled-to-sunny-filled-loop-transition v-else />
   </div>
 </template>
 
 <script setup lang="ts">
+
 import { computed } from 'vue';
 import { useThemeStore } from "@/store";
 

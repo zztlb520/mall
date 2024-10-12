@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4706335 */
+  src: url('iconfont.woff2?t=1728725212162') format('woff2'),
+       url('iconfont.woff?t=1728725212162') format('woff'),
+       url('iconfont.ttf?t=1728725212162') format('truetype'),
+       url('iconfont.svg?t=1728725212162#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ali-skin-change:before {
+  content: "\e601";
+}
+
+.ali-my-wallet:before {
+  content: "\e65c";
+}
+
+.ali-delivery-address:before {
+  content: "\e662";
+}
+
+.ali-coupons:before {
+  content: "\e600";
+}
+
+.ali-service:before {
+  content: "\e699";
+}
+
+.ali-vip-benefits:before {
+  content: "\e681";
+}
+
+.ali-feedback:before {
+  content: "\fb0c";
+}
+
+.ali-awit-pay:before {
+  content: "\e62b";
+}
+
+.ali-after-sales:before {
+  content: "\e629";
+}
+
+.ali-awit-receipt:before {
+  content: "\e604";
+}
+
+.ali-awit-comment:before {
+  content: "\e632";
+}
+
+.ali-my-order:before {
+  content: "\e657";
+}
+

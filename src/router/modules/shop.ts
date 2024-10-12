@@ -1,4 +1,4 @@
-const user: AuthRoute.Route = {
+const shop: AuthRoute.Route = {
   name: 'shop',
   path: '/shop',
   component: 'self',
@@ -10,4 +10,4 @@ const user: AuthRoute.Route = {
   }
 };
 
-export default user;
+export default shop;

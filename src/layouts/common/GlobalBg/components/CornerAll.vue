@@ -6,7 +6,7 @@
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"
     viewBox="0,0,375,667"
-    preserveAspectRatio="xMinYMin meet"
+    preserveAspectRatio="none meet"
   >
     <g transform-origin="center" transform="rotate(180)">
       <rect x="0" y="0" height="100%" width="100%" :fill="fillColor"></rect>

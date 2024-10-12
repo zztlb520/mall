@@ -12,10 +12,14 @@ declare namespace Auth {
     interface UserInfo {
         /** 用户id */
         userId: string;
+		/**用户头像下标 */
+		userAvatar: number;
         /** 用户名 */
         userName: string;
         /** 用户角色类型 */
         userRole: RoleType;
+		/** 等级 */
+		userLive: number
     }
 }
 
