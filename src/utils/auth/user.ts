@@ -34,24 +34,26 @@ export function removeRefreshToken() {
 /** 获取用户信息 */
 export function getUserInfo() {
     const emptyInfo: Auth.UserInfo = {
-      userId: '',
-      userName: '',
-      userRole: 'user'
-    };
+		userId: '',
+		userName: '',
+		userRole: 'user',
+		userAvatar: 0,
+		userLive: 0
+	};
     const userInfo: Auth.UserInfo = getLocal<Auth.UserInfo>(EnumStorageKey['user-info']) || emptyInfo;
     return userInfo;
   }
-  
+
   /** 设置用户信息 */
   export function setUserInfo(userInfo: Auth.UserInfo) {
     setLocal(EnumStorageKey['user-info'], userInfo);
   }
-  
+
   /** 去除用户信息 */
   export function removeUserInfo() {
     removeLocal(EnumStorageKey['user-info']);
   }
-  
+
   /** 去除用户相关缓存 */
   export function clearAuthStorage() {
     removeToken();

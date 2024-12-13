@@ -1,6 +1,6 @@
 <template>
     <div class="h-full">
-		
+
         <global-sider/>
         <global-content/>
         <global-footer/>
@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-
 import {
   GlobalBackTop,
   GlobalContent,

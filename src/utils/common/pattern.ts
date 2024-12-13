@@ -1,3 +1,5 @@
+import { Common } from "~/src/typings/global";
+
 /**
  * 策略模式
  * @param actions 每一种可能执行的操作

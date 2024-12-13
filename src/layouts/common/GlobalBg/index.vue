@@ -21,7 +21,6 @@ interface Props {
 
 const props = defineProps<Props>();
 const theme = useThemeStore();
-console.log(theme)
 const lightColor = computed(() => getColorPalette(props.themeColor, 3));
 const darkColor = computed(() => getColorPalette(props.themeColor, 6));
 </script>

@@ -1,4 +1,5 @@
 import { EnumDataType } from '@/enum';
+import { dataTypeLabels } from '@/constants';
 
 export function isNumber(data: unknown) {
   return Object.prototype.toString.call(data) === EnumDataType.number;
@@ -35,4 +36,12 @@ export function isMap(data: unknown) {
 }
 export function isFile(data: unknown) {
   return Object.prototype.toString.call(data) === EnumDataType.file;
+}
+
+function getDataTypeString<K extends TypeUtil.DataTypeStringKey>(value: unknown) {
+	return Object.prototype.toString.call(value) as TypeUtil.DataTypeString<K>;
+}
+
+export function isFunction<T extends (...args: any[]) => any | void>(value: T | unknown): value is T {
+	return getDataTypeString(value) === dataTypeLabels.function;
 }
