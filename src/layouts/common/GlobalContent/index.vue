@@ -1,16 +1,14 @@
 <template>
-	<div class="h-full inset-0">
-		<router-view v-slot="{ Component, route }">
-			<transition :name="theme.pageAnimateMode" mode="out-in"
-				@after-leave="resetScroll"
-				@before-leave="handleBeforeLeave"
-				@after-enter="handleAfterEnter">
-				<keep-alive :include="routeStore.cacheRoutes">
-					<component :is="Component" v-if="app.reloadFlag" :key="route.fullPath" :id="EnumStorageKey['layout-scroll-el-id']" />
-				</keep-alive>
-			</transition>
-		</router-view>
-	</div>
+	<router-view v-slot="{ Component, route }">
+		<transition :name="theme.pageAnimateMode" mode="out-in"
+			@after-leave="resetScroll"
+			@before-leave="handleBeforeLeave"
+			@after-enter="handleAfterEnter">
+			<keep-alive :include="routeStore.cacheRoutes">
+				<component :is="Component" v-if="app.reloadFlag" :key="route.fullPath" :id="EnumStorageKey['layout-scroll-el-id']" />
+			</keep-alive>
+		</transition>
+	</router-view>
 </template>
 
 <script setup lang="ts">

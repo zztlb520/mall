@@ -1,3 +1,4 @@
+$primary: var(--van-primary-color); //主题
 $N1:#F7F8FA; //背景颜色
 $N2:#F2F3F5; //背景颜色
 $N3:#EBEDF0; //边框。线色
@@ -7,7 +8,7 @@ $N6:#969799; //文字色，辅助、说明文字
 $N7:#646566; //文字色，指主文字2
 $N8:#323233; //文字色，指主文字1
 $B:#000000; //黑色
-$W:#000000; //白色
+$W:#fff; //白色
 // 功能色
 $link:#576B95; //文字链接色
 $success:#07C160; //成功色
@@ -15,40 +16,45 @@ $error:#EE0A24; //爆错色
 $O4: #ED6A0C; //通知消息中的文本颜色
 $Y1: #FFFBE8; //通知消息中的背景颜色
 $CY4: #FAAB0C; //文字辅助颜色
-
+//蓝色渐变
+$blue-gradient:
+	radial-gradient(at 46.8% 17%, #4a82db 0%, #4a82db00 100%),
+	radial-gradient(at 5.1% 58.9%, #419add 0%, #419add00 100%),
+	radial-gradient(at 69.2% 61.5%, #30b8e2 0%, #30b8e200 100%),
+	radial-gradient(at 63.4% 7.1%, #4adbdb 0%, #4adbdb00 100%);
 :root {
 	--foot-h: 64px
 }
 :root, [data-theme="default"] {
     /* color contrasts */
-    --kaya-bg: #F7F8FA;
-    --kaya-text: #323233;
+    --kaya-bg: $N1;
+    --kaya-text: $N8;
     --kaya-gray: #777;
     --kaya-black: #333;
     /** 商品价格主颜色*/
     --color-price:#d06667;
-    --kaya-bg-primary:var(--van-primary-color);
+    --kaya-bg-primary: $primary;
     --color-contrast-lower: #f2f2f2;
     --color-contrast-low: #d3d3d4;
     --color-contrast-medium: #79797c;
     --color-contrast-high: #313135;
     --color-shadow:#aeaeb7;
-    --color-contrast-higher: black;
+    --color-contrast-higher: $B;
     --kaya-bg-mix:var(--van-primary-dark-color);
     --color-primary-text:var(--van-primary-light-color);
 
 	/**遮罩层 背景透明度*/
-	--van-overlay-background:rgba(0, 0, 0, .5);
+	--van-overlay-background:rgba($B, 0.5);
 
   }
 
   [data-theme="dark"] {
     /* color contrasts */
     --kaya-bg:#333;
-    --kaya-bg-primary:black;
-    --kaya-text: #fff;
+    --kaya-bg-primary:$B;
+    --kaya-text: $W;
     --kaya-gray: #c2c0c0;
-    --kaya-black: #fff;
+    --kaya-black: $W;
 
     /** 商品价格主颜色*/
     --color-price:#d06667;
@@ -58,10 +64,10 @@ $CY4: #FAAB0C; //文字辅助颜色
     --color-contrast-medium: hsl(240, 1%, 57%);
     --color-contrast-high: hsl(0, 0%, 89%);
     --color-shadow:hsl(0, 0%, 100%);
-    --color-contrast-higher: white;
-    --kaya-bg-mix: black;
+    --color-contrast-higher: $W;
+    --kaya-bg-mix: $B;
     --color-primary-text:var(--van-primary-dark-color);
 
 	/**遮罩层 背景透明度*/
-	--van-overlay-background:rgba(0, 0, 0, .3);
+	--van-overlay-background:rgba($B, 0.3);
 }

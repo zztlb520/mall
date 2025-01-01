@@ -1,16 +1,13 @@
 <template>
-    <div class="h-full">
-
-        <global-sider/>
-        <global-content/>
-        <global-footer/>
-        <!-- <global-back-top /> -->
-    </div>
+	<div>
+		<global-sider/>
+		<global-content/>
+		<global-footer/>
+	</div>
 </template>
 
 <script setup lang="ts">
 import {
-  GlobalBackTop,
   GlobalContent,
   GlobalFooter,
   GlobalSider

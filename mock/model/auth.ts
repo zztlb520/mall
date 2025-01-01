@@ -1,10 +1,10 @@
-interface UserModel extends Auth.UserInfo {
+interface AuthModel extends Auth.UserInfo {
     token: string;
     refreshToken: string;
     password: string;
 }
 
-export const userModel: UserModel[] = [
+export const authModel: AuthModel[] = [
     {
         token: '__TOKEN_USER__',
         refreshToken: '__REFRESH_TOKEN_ZZT__',

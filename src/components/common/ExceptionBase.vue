@@ -1,5 +1,5 @@
 <template>
-	<div class="flex-col items-center wh-full">
+	<div class="flex-col flex-center wh-full">
 		<div class="text-300px text-primary">
 			<icon-local-no-permission v-if="type === '403'" />
 			<icon-local-not-found v-if="type === '404'" />

@@ -29,5 +29,3 @@ registerNaiveTools()
 subscribeStore();
 useGlobalEvents();
 </script>
-
-<style scoped></style>

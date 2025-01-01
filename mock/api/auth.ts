@@ -1,5 +1,5 @@
 import type { MockMethod } from 'vite-plugin-mock';
-import { userModel } from '../model';
+import { authModel } from '../model';
 
 /** 参数错误的状态码 */
 const ERROR_PARAM_CODE = 10000;
@@ -34,7 +34,7 @@ const apis: MockMethod[] = [
                 };
             }
 
-            const findItem = userModel.find(item => item.userName === userName && item.password === password);
+            const findItem = authModel.find(item => item.userName === userName && item.password === password);
 
             if (findItem) {
                 return {
@@ -76,7 +76,7 @@ const apis: MockMethod[] = [
 				userLive: 0,
                 userRole: 'user'
             };
-            const isInUser = userModel.some(item => {
+            const isInUser = authModel.some(item => {
                 const flag = item.token === authorization;
                 if (flag) {
                     const { userId: itemUserId, userName, userRole, userAvatar, userLive } = item;
@@ -106,7 +106,7 @@ const apis: MockMethod[] = [
         response: (options: Service.MockOption): Service.MockServiceResult<ApiAuth.Token | null> => {
             const { refreshToken = '' } = options.body;
 
-            const findItem = userModel.find(item => item.refreshToken === refreshToken);
+            const findItem = authModel.find(item => item.refreshToken === refreshToken);
 
             if (findItem) {
                 return {
