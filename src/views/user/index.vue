@@ -5,11 +5,11 @@
 			<div class="avatar" :style="{'background-image':`url(./src/assets/img/avatar/${auth.userInfo.userAvatar}.jpg)`}">
 			</div>
 		</div>
-		<van-pull-refresh v-model="store.loading" :head-height="56" @refresh="onRefresh">
+		<van-pull-refresh v-model="store.loading" :head-height="80" @refresh="onRefresh">
 			<template #loading>
 				<pull-loading/>
 			</template>
-			<div class="h-full p-t-30px">
+			<div>
 				<div class="flex h-80px items-center p-l-20px">
 					<img class="w-70px h-70px rounded-50%" :src="`./src/assets/img/avatar/${auth.userInfo.userAvatar}.jpg`" alt="">
 					<div class="m-l-20px">
@@ -96,11 +96,12 @@ store.getAll()
 
 <style lang="scss" scoped>
 .user-page{
-	height: 100%;
+	height: 100vh;
 	position: relative;
 	z-index: 1;
 	width: 100%;
 	overflow-x: hidden;
+	padding-top: 56px;
 	padding-bottom: 84px;
 	&::before{
 		content: "";

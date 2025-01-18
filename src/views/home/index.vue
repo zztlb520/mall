@@ -11,7 +11,7 @@
 				<header class="relative h-154px">
 					<van-swipe class="h-100% w-100% rounded-15px" vertical :autoplay="3000">
 						<van-swipe-item v-for="(item,index) in store.config.bannas" :key="index">
-							<img class="w-100% h-100%" :src="`./src/assets/img/home/banna/banna${item}.jpg`"/>
+							<img class="w-100% h-100%" :src="`./src/assets/img/home/banna/banna${item}.jpg`" alt="swiper"/>
 						</van-swipe-item>
 					</van-swipe>
 					<van-notice-bar left-icon="volume-o" :text="store.config.notifica"/>
@@ -21,7 +21,7 @@
 						<van-swipe-item v-for="(item,index) in store.config.quickNavs" :key="index">
 							<div class="grid grid-cols-5 gap-x-10px text-center">
 								<div v-for="(e,index) in item" :key="index">
-									<img class="w-60px h-60px" src="src/assets/img/home/quickNav/appliances.png" alt="">
+									<img class="w-60px h-60px" src="src/assets/img/home/quickNav/appliances.png" alt="swiper">
 									<!-- <van-image class="w-60px h-60px" src="src/assets/img/home/quickNav/appliances.png" lazy-load>
 										<template v-slot:loading>
 											<icon-local-gears-spinner class="text-primary w-100% h-100%"></icon-local-gears-spinner>
@@ -45,7 +45,7 @@
 							<count-down :time="store.config.spike.time"/>
 						</div>
 						<div class="flex-y-center h-100px justify-between mt-10px">
-							<img v-for="(item,index) in store.config.spike.url" :src="`./src/assets/img/home/spike/${item}.jpg`" :key="index" class="w-100px h-100px rounded-15px" alt="">
+							<img v-for="(item,index) in store.config.spike.url" :src="`./src/assets/img/home/spike/${item}.jpg`" :key="index" class="w-100px h-100px rounded-15px" alt="限量">
 						</div>
 					</div>
 					<div class="flex-y-center justify-between">
@@ -61,7 +61,7 @@
 								<span class="hot_tip_bg" v-if="item.isBg">{{item.bgtxt}}</span>
 							</span>
 							<span class="text-10px kaya-gray">{{item.tip}}</span>
-							<img class="h-80px" :src="`./src/assets/img/home/hot/${item.url}.png`" />
+							<img class="h-80px" :src="`./src/assets/img/home/hot/${item.url}.png`" alt="限量" />
 						</van-space>
 					</div>
 					<div class="flex-y-center justify-between px-10px">
@@ -84,7 +84,7 @@
 					<van-space class="snap_up" direction="vertical" size='10px' fill>
 						<template v-for="(item,index) in store.config.snapUp" :key="index">
 							<div class="box">
-								<img class="w-100px" :src="`./src/assets/img/home/snapUp/${item.url}.png`" />
+								<img class="w-100px" :src="`./src/assets/img/home/snapUp/${item.url}.png`" alt="抢购"/>
 								<div class="flex-1">
 									<span class="text-12px">{{item.tip}}</span>
 									<van-progress class="progress" :pivot-text="`已抢购${item.num}%`" :percentage="item.num" stroke-width="15" />
@@ -114,7 +114,7 @@
 							<div class="flex-y-center justify-between">
 								<template v-for="(item,index) in store.config.recommendTitle" :key="index">
 									<div class="flex-center flex-column w-90% px-5px">
-										<img class="rounded-15px w-100%" :src="`./src/assets/img/home/recommend/title/${item.url}.jpg`"/>
+										<img class="rounded-15px w-100%" :src="`./src/assets/img/home/recommend/title/${item.url}.jpg`" alt="推荐"/>
 										<h3 class="kaya-black text-12px h-35px my-6px text-multiple-ellipsis">{{item.tip}}</h3>
 										<div class="w-100%">
 											<b class="color-price mr-10px">￥{{item.specialPrice}}</b>
@@ -126,11 +126,11 @@
 						</div>
 					</div>
 					<div class="flex-y-center flex-column w-100%" v-for="(o,index) in store.config.recommendMain" :key="index">
-						<img class="h-130px w-100% rounded-t-15px" :src="`./src/assets/img/home/recommend/heade/${o.url}.jpg`"/>
+						<img class="h-130px w-100% rounded-t-15px" :src="`./src/assets/img/home/recommend/heade/${o.url}.jpg`" alt="banna"/>
 						<div class="recommend h-auto w-100% flex-y-center justify-between kaya-bg rounded-b-15px p-10px overflow-auto">
 							<template v-for="(item,i) in o.content" :key="i">
 								<div class="flex-center flex-column px-10px">
-									<img class="w-80px h-80px rounded-15px object-contain" :src="`./src/assets/img/home/recommend/content/${item.url}.png`"/>
+									<img class="w-80px h-80px rounded-15px object-contain" :src="`./src/assets/img/home/recommend/content/${item.url}.png`" alt="推荐"/>
 									<span class="w-80px kaya-black h-35px text-multiple-ellipsis text-11px my-6px">{{item.tip}}</span>
 									<div class="w-100%">
 										<b class="color-price text-12px mr-10px">￥{{item.specialPrice}}</b>
@@ -143,7 +143,7 @@
 					<h1 class="text-center leading-40px"><b>猜 • 你 • 喜 • 欢</b></h1>
 					<div class="flex-y-center justify-between flex-wrap">
 						<div class="w-48% kaya-bg rounded-15px mb-10px" v-for="(item,index) in store.config.like" :key="index">
-							<img class="w-100% rounded-t-15px" :src="`./src/assets/img/home/like/${item.url}`"/>
+							<img class="w-100% rounded-t-15px" :src="`./src/assets/img/home/like/${item.url}`" alt="喜欢"/>
 							<div class="h-100px px-8px">
 								<div class="text-13px flex-y-center h-60px">{{item.tip}}</div>
 								<div class="flex-y-center justify-between">

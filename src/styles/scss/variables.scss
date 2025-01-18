@@ -51,7 +51,7 @@ $blue-gradient:
   [data-theme="dark"] {
     /* color contrasts */
     --kaya-bg:#333;
-    --kaya-bg-primary:$B;
+    --kaya-bg-primary: #000000;
     --kaya-text: $W;
     --kaya-gray: #c2c0c0;
     --kaya-black: $W;
@@ -65,7 +65,7 @@ $blue-gradient:
     --color-contrast-high: hsl(0, 0%, 89%);
     --color-shadow:hsl(0, 0%, 100%);
     --color-contrast-higher: $W;
-    --kaya-bg-mix: $B;
+    --kaya-bg-mix: #000000;
     --color-primary-text:var(--van-primary-dark-color);
 
 	/**遮罩层 背景透明度*/

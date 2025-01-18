@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-y-center z--1 justify-between h-56px fixed z-9 top-0 w-100% overflow-hidden p-x-15px" v-if="app.headerNavShow">
+    <div class="flex-y-center z--1 justify-between fixed z-9 top-0 w-100% overflow-hidden p-x-15px" v-if="app.headerNavShow">
 		<menu-collapse v-if="hederConfig.showMenuCollapse" class="z-2 m-r-10px"/>
 		<search v-if="hederConfig.showSearch" class="z-2"/>
         <dark-mode-switch v-if="hederConfig.showDarkSwitch" :dark="theme.darkMode" class="text-20px z-2 m-l-10px" @update:dark="theme.setDarkMode"/>

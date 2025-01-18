@@ -1,6 +1,9 @@
 <template>
 	<router-view v-slot="{ Component, route }">
-		<transition :name="theme.pageAnimateMode" mode="out-in"
+		<transition
+			:name="theme.pageAnimateMode"
+			mode="out-in"
+			:appear="true"
 			@after-leave="resetScroll"
 			@before-leave="handleBeforeLeave"
 			@after-enter="handleAfterEnter">

@@ -4,7 +4,7 @@
 			<ul ref="listRef">
 				<li v-for="(item, index) in items" :key="index" @click="handleToDebounce(item.router,index)"
 					:class="index == activeLi ? 'active' : ''" ref="listEntriesRef">
-					<button>
+					<button :title="item.router">
 						<svg>
 							<use :xlink:href="item.icon" />
 						</svg>
@@ -86,7 +86,7 @@ const { routerPush } = useRouterPush();
 const route = useRoute();
 
 const { to, set, registerPlugin } = gsap;
-registerPlugin(MorphSVGPlugin);
+// registerPlugin(MorphSVGPlugin);
 
 const items = Array<Nav>(
 	{ icon: '#icon-home', icon1: '#icon-home-filled', router: '/home' },
