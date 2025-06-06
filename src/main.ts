@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-// import { Lazyload } from 'vant';
+import { Lazyload } from 'vant';
 // import { setupDirectives } from './directives';
 import { setupRouter } from './router';
 import { setupAssets } from './plugins';
@@ -20,9 +20,9 @@ async function setupApp() {
 	// vue router
 	await setupRouter(app);
 
-	// app.use(Lazyload, {
-	// 	lazyComponent: true,
-	// });
+	app.use(Lazyload, {
+		lazyComponent: true,
+	});
 	// mount app
 	app.mount('#app');
 }

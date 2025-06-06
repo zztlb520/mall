@@ -21,15 +21,7 @@
 						<van-swipe-item v-for="(item,index) in store.config.quickNavs" :key="index">
 							<div class="grid grid-cols-5 gap-x-10px text-center">
 								<div v-for="(e,index) in item" :key="index">
-									<img class="w-60px h-60px" src="src/assets/img/home/quickNav/appliances.png" alt="swiper">
-									<!-- <van-image class="w-60px h-60px" src="src/assets/img/home/quickNav/appliances.png" lazy-load>
-										<template v-slot:loading>
-											<icon-local-gears-spinner class="text-primary w-100% h-100%"></icon-local-gears-spinner>
-										</template>
-										<template v-slot:error>
-											<icon-local-error-svg class="text-primary w-100% h-100%"></icon-local-error-svg>
-										</template>
-									</van-image> -->
+									<LazyImg class="w-60px h-60px" img="src/assets/img/home/quickNav/appliances.png"></LazyImg>
 									<div class="text-12px lh-14px kaya-text">{{e.text}}</div>
 								</div>
 							</div>
