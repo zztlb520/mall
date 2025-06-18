@@ -1,9 +1,9 @@
-import { showDialog, showToast } from 'vant';
+import { Dialog, Toast } from 'vant';
 import ElNotification from '@/hooks/notification/index';
 declare global {
 	interface Window {
-		$dialog?: typeof showDialog;
-		$toast?: typeof showToast;
+		$dialog?: typeof Dialog;
+		$toast?: typeof Toast;
 		$notify?: typeof ElNotification;
 	}
 }

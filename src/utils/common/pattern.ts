@@ -30,3 +30,15 @@ export const pxToVw = (px: number): number => {
 export const vwToPx = (vw: number): number => {
 	return (document.documentElement.clientWidth / 100) * vw
 }
+
+
+/**
+ * 得到一个两数之间的随机整数,不含最大值，含最小值
+ * @param min
+ * @param max
+ */
+export function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min)) + min
+}

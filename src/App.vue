@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import  { type ConfigProviderThemeVars, showToast, showDialog, showNotify } from 'vant';
+import  { type ConfigProviderThemeVars, Toast, showDialog, showNotify } from 'vant';
 import ElNotification from '@/hooks/notification/index';
 // import '@/hooks/notification/style';
 import { subscribeStore, useThemeStore } from '@/store';
@@ -18,7 +18,7 @@ const darkMode = computed(()=>theme.darkMode ? 'dark' : 'light') ;
 function registerNaiveTools() {
 	// window.$loadingBar = useLoadingBar();
 	window.$dialog = showDialog;
-	window.$toast = showToast;
+	window.$toast = Toast;
 	window.$notify = ElNotification;
 }
 const themeVars: ConfigProviderThemeVars = {

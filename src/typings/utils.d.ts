@@ -41,4 +41,23 @@ declare namespace TypeUtil {
 	type UnionToTuple<T, R extends any[] = []> = [T] extends [never]
 	  ? R
 	  : UnionToTuple<Exclude<T, GetUnionLast<T>>, [GetUnionLast<T>, ...R]>;
+
+	/**
+	 * 提取数组类型
+	 */
+	type InferArray<T> = T extends (infer S)[] ? S : never
+
+	type Simplify<T> = {
+		[P in keyof T]: T[P]
+	}
+	/**
+	 * 将部分字段变为可选
+	*/
+	type SomePartial<T, K extends keyof T> = Simplify<Partial<Pick<T, K>> & Pick<T, Exclude<keyof T, K>>>
+
+	type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
+	? Acc[number]
+	: Enumerate<N, [...Acc, Acc['length']]>
+
+	type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
   }
