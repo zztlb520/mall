@@ -2,7 +2,7 @@
 	<div class="GlobalFooter">
 		<div id="tabbar" ref="tabbarRef">
 			<ul ref="listRef">
-				<li v-for="(item, index) in items" :key="index" @click="handleToDebounce(item.router,index)"
+				<li v-for="(item, index) in items" :key="index" @click="handleTo(item.router,index)"
 					:class="index == activeLi ? 'active' : ''" ref="listEntriesRef">
 					<button :title="item.router">
 						<svg>
@@ -69,7 +69,8 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import { ref, onMounted, watch } from 'vue';
+import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
+import { ref, onMounted, watch, onUnmounted, nextTick } from 'vue';
 
 import { debounce } from '@/utils/common/common'
 import  { useRoute } from 'vue-router';
@@ -84,9 +85,8 @@ interface Nav {
 const { routerPush } = useRouterPush();
 
 const route = useRoute();
-
-const { to, set, registerPlugin } = gsap;
-// registerPlugin(MorphSVGPlugin);
+// 假设你已经注册了插件
+gsap.registerPlugin(MorphSVGPlugin);
 
 const items = Array<Nav>(
 	{ icon: '#icon-home', icon1: '#icon-home-filled', router: '/home' },
@@ -95,101 +95,114 @@ const items = Array<Nav>(
 	{ icon: '#icon-user', icon1: '#icon-user-filled', router: '/user' },
 )
 const activeLi = ref(0);
-
-const handleTo = (router: AuthRoute.RoutePath,index:number) => {
-	if (activeLi.value == index) return;
-	console.log(router)
-	routerPush(router)
-}
-const handleToDebounce = debounce(handleTo,100)
-watch(route, newValue => {
-	const i = items.findIndex((item)=>item.router==newValue.path);
-	if(i>=0) activeLi.value = i;
-	init(false, activeLi.value)
-});
-
 const tabbarRef = ref<HTMLElement>();
 const indicatorRef = ref<SVGGraphicsElement>();
-const listRef = ref<HTMLElement>();
 const listEntriesRef = ref<HTMLElement[]>()
-onMounted(() => {
-	if(route.path != items[0].router){
-		const i = items.findIndex((item)=>item.router==route.path);
-		if(i>0) activeLi.value = i;
-	}
-	init(true,activeLi.value)
-})
 
+const handleTo = debounce((router: AuthRoute.RoutePath,index:number) => {
+	if (activeLi.value == index) return;
+	routerPush(router)
+	debouncedInit(false,index);
+},50)
+
+// watch(route, newValue => {
+// 	const i = items.findIndex((item)=>item.router==newValue.path);
+// 	if(i>=0) activeLi.value = i;
+// 	debouncedInit(activeLi.value)
+// });
+const leftComplete = ref(12)
 const init = (firstTime: boolean = false,index:number=0) => {
-	if (listEntriesRef.value?.length && tabbarRef.value && indicatorRef.value) {
-		activeLi.value = index;
-		const entry = listEntriesRef.value[index];
-		const tabbar = tabbarRef.value as HTMLElement;
-		let left = entry.offsetLeft + entry.offsetWidth / 2 - (indicatorRef.value.getBBox().width / 2) + 'px';
-		to(entry, {
-			'--icon-circle': '0px',
-			duration: .25
-		});
-		to(indicatorRef.value.querySelector('path'), {
-			keyframes: [{
-				morphSVG: 'M34 58C45.4078 58 48.3887 68.7534 68 72H0C19.6113 68.7534 22.5922 58 34 58Z',
-				duration: 0
-			},
-			{
-				morphSVG: 'M34 48C41.4078 48 44.3887 66.7534 68 72H0C23.6113 66.7534 26.5922 48 34 48Z',
-				duration: .25,
-				delay: .125,
-				onStart() {
-					to(entry, {
-						immediateRender: firstTime,
-						keyframes: [{
-							'--icon-y': '4px',
-							'--icon-s': .9,
-							duration: .185,
-							delay: .025
-						},
-						{
-							'--icon-circle': '28px',
-							'--icon-y': '0px',
-							'--icon-s': 1,
-							duration: .2,
-							clearProps: true,
-						}]
-					});
-					to(tabbar, {
-						immediateRender: firstTime,
-						keyframes: [{
-							'--indicator-circle-y': '-2.4em',
-							duration: .25,
-							delay: .05
-						}, {
-							'--indicator-circle-o': 0,
-							duration: .1,
-							clearProps: true,
-							onComplete() {
-								set(tabbar, {
-									'--indicator-x': left
-								});
-							}
-						}]
-					});
-				}
-			},
-			{
-				morphSVG: 'M34 54C45.4078 54 48.3887 66.7534 68 72H0C19.6113 66.7534 22.5922 54 34 54Z',
-				duration: .2
-			}]
-		});
+	const entries = listEntriesRef.value;
+    const tabbar = tabbarRef.value;
+    const indicator = indicatorRef.value;
+	if (entries?.length && tabbar && indicator) {
+        activeLi.value = index; 
+        const entry = entries[index];
+        const path = indicator.querySelector('path');
+		//  计算目标位置：子元素相对于父容器的偏移 + 子元素中心点 - 指示器中心点
+        const left = entry.offsetLeft + entry.offsetWidth / 2 - (indicator.getBoundingClientRect().width / 2);
+		leftComplete.value = left;
+    	const leftPx = `${left}px`;
+        // 清理该元素上所有正在运行的动画，防止位置冲突
+        gsap.killTweensOf([tabbar, path, entry]);
 
-		to(tabbar, {
-			immediateRender: firstTime,
-			keyframes: [{
-				'--indicator-x': left,
-				duration: .3
-			}]
+        // 如果是第一次，直接定位，不跑动画
+        if (firstTime) {
+			activeLi.value = index;
+            gsap.set(tabbar, { '--indicator-x': leftPx });
+            return;
+        }
+		// 创建串行时间线
+    	const tl = gsap.timeline()
+		tl.to(entry, {
+            '--icon-circle': '0px',
+            duration: 0.15
+        }, 0);
+		// 1. 第一步：位移动画
+		gsap.to(tabbar, {
+			'--indicator-x': leftPx,
+			duration: 0.25,
+			ease: "power2.out",
 		});
+		// 2. 第二步：执行 SVG 路径形变 + 图标跳动
+		if (path) {
+			tl.to(path, {
+				keyframes: [
+					// 1. 瞬间变平准备弹起 (下沉状态)
+					{ 
+						morphSVG: 'M34 58C45.4078 58 48.3887 68.7534 68 72H0C19.6113 68.7534 22.5922 58 34 58Z', 
+						duration: 0 
+					},
+					{
+						morphSVG: 'M34 48C41.4078 48 44.3887 66.7534 68 72H0C23.6113 66.7534 26.5922 48 34 48Z',
+						duration: 0.2,
+						delay: 0.05,
+						onStart() {
+							// 内部嵌套：图标跳动逻辑 (保留原有参数)
+							gsap.to(entry, {
+								keyframes: [
+									{ '--icon-y': '4px', '--icon-s': .9, duration: .1 },
+									{ '--icon-circle': '28px', '--icon-y': '0px', '--icon-s': 1, duration: 0.15, clearProps: true }
+								]
+							});
+							// 内部嵌套：指示器圆圈逻辑 (保留原有参数)
+							gsap.to(tabbar, {
+								keyframes: [
+									{ '--indicator-circle-y': '-2.4em', duration: 0.15 },
+									{ 
+										'--indicator-circle-o': 0,
+										duration: 0.08, 
+										// 清除样式时，只清除临时的动画属性，不要清除 --indicator-x
+										clearProps: '--indicator-circle-y,--indicator-circle-o',
+									 }
+								]
+							});
+						}
+					},
+					{
+						morphSVG: 'M34 54C45.4078 54 48.3887 66.7534 68 72H0C19.6113 66.7534 22.5922 54 34 54Z',
+						duration: 0.15
+					}
+				],
+			}, 0.05);
+		}
 	}
 }
+const debouncedInit = debounce((firstTime:boolean,index: number) => {
+    init(firstTime, index);
+}, 200); // 150ms 防抖，过滤极快点击
+
+onMounted(() => {
+	nextTick(() => {
+		init(true, 0)
+		window.addEventListener('resize', () => init(true, activeLi.value));
+	});
+	
+})
+onUnmounted(() => {
+    debouncedInit.cancel();
+	window.removeEventListener('resize', () => init(true, activeLi.value));
+});
 </script>
 
 <style lang="scss" scoped>
@@ -199,6 +212,7 @@ const init = (firstTime: boolean = false,index:number=0) => {
 	left: 0;
 	right: 0;
 	z-index: 99;
+	padding-bottom: env(safe-area-inset-bottom);
 	#tabbar {
 		--c-color: var(--van-primary-color);
 		--c-background: var(--kaya-bg);
@@ -211,6 +225,7 @@ const init = (firstTime: boolean = false,index:number=0) => {
 		overflow: hidden;
 		position: relative;
 		background: var(--van-background-2);
+		transition: none !important;
 	}
 }
 
@@ -223,6 +238,7 @@ const init = (firstTime: boolean = false,index:number=0) => {
 	height: var(--foot-h);
 	fill: var(--c-color);
 	transform: translateX(var(--indicator-x));
+	transition: none !important;
 }
 
 #tabbar .indicator path {

@@ -27,7 +27,7 @@
 							</div>
 						</van-swipe-item>
 					</van-swipe>
-					<div class="w-100% h-158px kaya-bg rounded-15px p-10px">
+					<div class="w-100% h-158px  rounded-15px p-10px">
 						<div class="flex-y-center h-30px justify-between">
 							<div class="flex-y-center">
 								<h2 class="text-20px">限量<span class="text-danger">秒杀</span></h2>

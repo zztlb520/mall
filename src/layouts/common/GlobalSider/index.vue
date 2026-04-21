@@ -17,13 +17,13 @@ import { useAppStore } from '@/store';
 import { ref } from 'vue';
 const app = useAppStore();
 const show = ref(false);
-
+const count = ref(0)
 const handelNotify = ()=>{
 	window.$notify.success({
-		title: 'Info',
+		title: `Info${count.value++}`,
 		message: 'This is a message wiThis is a message without close buttonthout close button',
 		position:'top-right',
-		duration: 1000
+		duration: 0
 	});
 }
 
