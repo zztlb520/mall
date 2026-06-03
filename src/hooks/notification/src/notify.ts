@@ -102,7 +102,7 @@ const notify: NotifyFn & Partial<Notify> & { _context: AppContext | null } =
 			// for out component, so that all closing steps will not be skipped.
 			close: () => { (vm.component!.exposed as { visible: Ref<boolean> }).visible.value = false },
 		}
-	}
+}
 notificationTypes.forEach((type) => {
 	notify[type] = (options = {}) => {
 		if (typeof options === 'string' || isVNode(options)) {

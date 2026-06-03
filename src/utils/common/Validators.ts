@@ -48,7 +48,7 @@ export class RulesValidator implements RulesValidatorType {
             // 验证成立则被拦截
             if (validationResults) {
                 this.status = false
-                if ("message" in item) {
+                if ("message" in item) {	
                     window.$toast({
                         className: item.className || "vk-toast-fail",
                         message: item.message,
